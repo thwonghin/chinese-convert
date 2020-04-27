@@ -10,13 +10,13 @@ import { convertFile } from './convert-file.js';
 async function main(): Promise<void> {
     const args = yargs
         .option('i', {
-            alias: 'infile',
+            alias: 'in',
             describe: 'Input file path',
             demand: true,
             type: 'string',
         })
         .option('o', {
-            alias: 'outfile',
+            alias: 'out',
             describe: 'Output file path',
             demand: true,
             type: 'string',
@@ -31,7 +31,6 @@ async function main(): Promise<void> {
             alias: "encoding",
             describe: 'Input file encoding. Auto-detect if not provided.',
             type: 'string',
-            demand: false,
         })
         .argv;
 
@@ -39,8 +38,8 @@ async function main(): Promise<void> {
         throw new Error(`Unknown converter "${args.c}". It should be one of:\n  [${converters.join(', ')}]`);
     }
 
-    if (!await isFilePathExist(path.normalize(args.i))) {
-        throw new Error(`File ${args.i} does not exist.`);
+    if (!await isFilePathExist(args.i)) {
+        throw new Error(`File "${args.i}" does not exist.`);
     }
 
     if (args.e && !iconv.encodingExists(args.e)) {
@@ -48,8 +47,8 @@ async function main(): Promise<void> {
     }
 
     await convertFile({
-        inPath: path.normalize(args.i),
-        outPath: path.normalize(args.o),
+        inPath: args.i,
+        outPath: args.o,
         converter: args.c as Converter,
         inEncoding: args.e,
     });

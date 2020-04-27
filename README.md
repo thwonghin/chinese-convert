@@ -13,8 +13,8 @@ yarn start --help
 Options:
   --help           Show help                                           [boolean]
   --version        Show version number                                 [boolean]
-  -i, --infile     Input file path                           [string] [required]
-  -o, --outfile    Output file path                          [string] [required]
+  -i, --in         Input file path                           [string] [required]
+  -o, --out        Output file path                          [string] [required]
   -c, --converter  FanHuaJi converter name                   [string] [required]
   -e, --encoding   Input file encoding. Auto-detect if not provided.    [string]
 ```
