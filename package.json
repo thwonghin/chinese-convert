@@ -5,11 +5,16 @@
   "author": "Hin Wong <fraywong@gmail.com>",
   "license": "MIT",
   "type": "module",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
     "start": "tsc && node dist/index.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "iconv-lite": "^0.5.1",
+    "jschardet": "^2.1.1",
     "yargs": "^15.3.1"
   },
   "devDependencies": {

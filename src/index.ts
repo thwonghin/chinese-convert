@@ -1,5 +1,6 @@
 import path from 'path';
 import yargs from 'yargs';
+import iconv from 'iconv-lite';
 
 import { converters } from './libs/fanhuaji/index.js';
 import { Converter } from './libs/fanhuaji/types.js';
@@ -26,20 +27,31 @@ async function main(): Promise<void> {
             demand: true,
             type: 'string',
         })
+        .option('e', {
+            alias: "encoding",
+            describe: 'Input file encoding. Auto-detect if not provided.',
+            type: 'string',
+            demand: false,
+        })
         .argv;
 
     if (!(converters as string[]).includes(args.c)) {
-        throw new Error(`Converter ${args.c} is unknown. It should be one of:\n  [${converters.join(', ')}]`);
+        throw new Error(`Unknown converter "${args.c}". It should be one of:\n  [${converters.join(', ')}]`);
     }
 
     if (!await isFilePathExist(path.normalize(args.i))) {
         throw new Error(`File ${args.i} does not exist.`);
     }
 
+    if (args.e && !iconv.encodingExists(args.e)) {
+        throw new Error(`Unknown encoding "${args.e}".`)
+    }
+
     await convertFile({
         inPath: path.normalize(args.i),
         outPath: path.normalize(args.o),
         converter: args.c as Converter,
+        inEncoding: args.e,
     });
 
     console.log('Conversion done!');

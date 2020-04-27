@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 
-import { ConvertRequestParams, ConvertResponse, Converter } from './types.js';
+import { ConvertRequestParams, ConvertResponse, Converter, Response } from './types.js';
 
 export const converters: Converter[] = [
     Converter.BPMF,
@@ -24,9 +24,16 @@ export class FanHuaJi {
         });
     }
 
+    private throwIfError<T>(response: Response<T>): void {
+        if (response.code !== 0) {
+            throw new Error(`${response.msg} (${response.code})`);
+        }
+    }
+
     public async convert(params: ConvertRequestParams): Promise<ConvertResponse> {
         const response = await this.#api.post<ConvertResponse>('/convert', params);
 
+        this.throwIfError(response.data);
         return response.data;
     }
 }
