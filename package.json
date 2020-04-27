@@ -1,5 +1,5 @@
 {
-  "name": "fanhuaji-cli",
+  "name": "chinese-convert-cli",
   "version": "1.0.0",
   "main": "dist/index.js",
   "author": "Hin Wong <fraywong@gmail.com>",

@@ -1,8 +1,8 @@
-# FanHuaJi CLI
+# Chinese Convert CLI
 
-Command line interface for [Fanhuaji (繁化姬)](https://zhconvert.org/).
+Command line interface to convert between Chinese text.
 
-本程式使用了繁化姬的 API 服務。
+本程式使用了[繁化姬 (Fanhuaji)](https://zhconvert.org/) 的 API 服務。
 
 ## Usage
 
@@ -15,16 +15,18 @@ Options:
   --version        Show version number                                 [boolean]
   -i, --in         Input file path                           [string] [required]
   -o, --out        Output file path                          [string] [required]
-  -c, --converter  FanHuaJi converter name                   [string] [required]
+  -c, --converter  Fanhuaji converter name                   [string] [required]
   -e, --encoding   Input file encoding. Auto-detect if not provided.    [string]
 ```
 
 ## TODO
 
-- Build binary
+- Build binaries with CI
 - Support custom keywords
+- Support more option for Fanhuaji
+- etc..
 
-## Licensing
+## License
 
 ### License on this project
 
