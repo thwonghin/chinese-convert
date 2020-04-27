@@ -1,0 +1,20 @@
+{
+  "name": "fanhuaji-cli",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "Hin Wong <fraywong@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "tsc && node dist/index.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "@types/yargs": "^15.0.4",
+    "typescript": "^3.9.0-beta"
+  }
+}

@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "incremental": true,
+        "allowSyntheticDefaultImports": true,
+        "lib": ["ES2020"],
+        "module": "ES2020",
+        "moduleResolution": "node",
+        "target": "ES2020",
+        "outDir": "./dist",
+        "preserveConstEnums": true
+    },
+    "include": [
+        "./src"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
