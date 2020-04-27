@@ -1,4 +1,3 @@
-import path from 'path';
 import yargs from 'yargs';
 import iconv from 'iconv-lite';
 
