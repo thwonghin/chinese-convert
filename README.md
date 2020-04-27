@@ -22,6 +22,7 @@ Options:
 ## TODO
 
 - Build binaries with CI
+- Add eslint & prettier
 - Support custom keywords
 - Support more option for Fanhuaji
 - etc..
