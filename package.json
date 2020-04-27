@@ -1,6 +1,8 @@
 {
   "name": "chinese-convert-cli",
   "version": "1.0.0",
+  "description": "Command line interface to convert between Chinese text.",
+  "repository": "git@github.com:thwonghin/chinese-convert-cli.git",
   "main": "dist/index.js",
   "author": "Hin Wong <fraywong@gmail.com>",
   "license": "MIT",
