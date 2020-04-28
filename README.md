@@ -1,5 +1,7 @@
 # Chinese Convert CLI
 
+![Test](https://github.com/thwonghin/chinese-convert-cli/workflows/Test/badge.svg)
+
 Command line interface to convert between Chinese text.
 
 本程式使用了[繁化姬 (Fanhuaji)](https://zhconvert.org/) 的 API 服務。
