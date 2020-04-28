@@ -25,4 +25,8 @@ jobs:
         uses: meeDamian/github-release@2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          files: release/
+          gzip: false
+          files: >
+            release/chinese-convert-cli-linux
+            release/chinese-convert-cli-macos
+            release/chinese-convert-cli-win.exe
