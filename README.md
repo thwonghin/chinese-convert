@@ -21,7 +21,6 @@ Options:
 
 ## TODO
 
-- Add eslint & prettier
 - Support custom keywords
 - Support more option for Fanhuaji
 - etc..

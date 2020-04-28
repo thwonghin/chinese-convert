@@ -1,6 +1,11 @@
 import axios, { AxiosInstance } from 'axios';
 
-import { ConvertRequestParams, ConvertResponse, Converter, Response } from './types';
+import {
+    ConvertRequestParams,
+    ConvertResponse,
+    Converter,
+    Response,
+} from './types';
 
 export const converters: Converter[] = [
     Converter.BPMF,
@@ -15,6 +20,12 @@ export const converters: Converter[] = [
     Converter.WIKITC,
 ];
 
+function throwIfError<T>(response: Response<T>): void {
+    if (response.code !== 0) {
+        throw new Error(`${response.msg} (${response.code})`);
+    }
+}
+
 export class FanHuaJi {
     #api: AxiosInstance;
 
@@ -24,16 +35,15 @@ export class FanHuaJi {
         });
     }
 
-    private throwIfError<T>(response: Response<T>): void {
-        if (response.code !== 0) {
-            throw new Error(`${response.msg} (${response.code})`);
-        }
-    }
+    public async convert(
+        params: ConvertRequestParams,
+    ): Promise<ConvertResponse> {
+        const response = await this.#api.post<ConvertResponse>(
+            '/convert',
+            params,
+        );
 
-    public async convert(params: ConvertRequestParams): Promise<ConvertResponse> {
-        const response = await this.#api.post<ConvertResponse>('/convert', params);
-
-        this.throwIfError(response.data);
+        throwIfError(response.data);
         return response.data;
     }
 }

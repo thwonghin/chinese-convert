@@ -25,12 +25,16 @@ export async function convertFile({
     converter,
 }: ConvertFileParams): Promise<ConvertFileResult> {
     const fileBuffer = await fs.promises.readFile(inPath);
-    const encoding = inEncoding || jschardet.detect(fileBuffer, {
-        minimumThreshold: 0.96
-    }).encoding;
+    const encoding =
+        inEncoding ||
+        jschardet.detect(fileBuffer, {
+            minimumThreshold: 0.96,
+        }).encoding;
 
     if (!encoding) {
-        throw new Error('Cannot detect encoding, please enter encoding manually. See --help.')
+        throw new Error(
+            'Cannot detect encoding, please enter encoding manually. See --help.',
+        );
     }
     const fileContent = iconv.decode(fileBuffer, encoding.toLowerCase());
 

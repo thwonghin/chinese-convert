@@ -1,0 +1,25 @@
+on: push
+
+name: Test
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Use Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.0.0'
+      - name: Install Dependencies
+        run: |
+          yarn
+      - name: Run Lint
+        run: |
+          yarn lint
+      - name: Build
+        run: |
+          yarn build

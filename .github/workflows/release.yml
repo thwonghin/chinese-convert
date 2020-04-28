@@ -1,7 +1,6 @@
 on:
   push:
-    tags:
-      'v*'
+    tags: 'v*'
 
 name: Create Release
 
@@ -21,6 +20,7 @@ jobs:
         run: |
           yarn
           yarn build
+          yarn package
       - name: Create Release
         uses: meeDamian/github-release@2.0
         with:

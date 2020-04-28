@@ -42,8 +42,16 @@ export type ConvertRequestParams = RequestParams<{
     jpTextStyles?: string;
 
     // https://docs.zhconvert.org/api/convert/#日文的處理策略
-    jpStyleConversionStrategy?: 'none' | 'protect' | 'protectOnlySameOrigin' | 'fix';
-    jpTextConversionStrategy?: 'none' | 'protect' | 'protectOnlySameOrigin' | 'fix';
+    jpStyleConversionStrategy?:
+        | 'none'
+        | 'protect'
+        | 'protectOnlySameOrigin'
+        | 'fix';
+    jpTextConversionStrategy?:
+        | 'none'
+        | 'protect'
+        | 'protectOnlySameOrigin'
+        | 'fix';
 
     // https://docs.zhconvert.org/api/convert/#自訂取代
     modules?: Record<string, -1 | 0 | 1>;

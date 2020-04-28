@@ -1,33 +1,44 @@
 {
-  "name": "chinese-convert-cli",
-  "version": "1.0.0",
-  "description": "Command line interface to convert between Chinese text.",
-  "repository": "git@github.com:thwonghin/chinese-convert-cli.git",
-  "main": "dist/index.js",
-  "author": "Hin Wong <fraywong@gmail.com>",
-  "license": "MIT",
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "scripts": {
-    "clean": "rm -rf dist || true",
-    "start": "tsc && node dist/index.js",
-    "build": "tsc && pkg . --out-path release"
-  },
-  "bin": "dist/index.js",
-  "pkg": {
-    "scripts": "dist/**/*.js"
-  },
-  "dependencies": {
-    "axios": "^0.19.2",
-    "iconv-lite": "^0.5.1",
-    "jschardet": "^2.1.1",
-    "yargs": "^15.3.1"
-  },
-  "devDependencies": {
-    "@types/node": "^13.13.4",
-    "@types/yargs": "^15.0.4",
-    "pkg": "^4.4.8",
-    "typescript": "^3.9.0-beta"
-  }
+    "name": "chinese-convert-cli",
+    "version": "1.0.0",
+    "description": "Command line interface to convert between Chinese text.",
+    "repository": "git@github.com:thwonghin/chinese-convert-cli.git",
+    "main": "dist/index.js",
+    "author": "Hin Wong <fraywong@gmail.com>",
+    "license": "MIT",
+    "engines": {
+        "node": ">=14.0.0"
+    },
+    "scripts": {
+        "clean": "rm -rf dist || true",
+        "start": "yarn build && node dist/index.js",
+        "build": "tsc",
+        "package": "pkg . --out-path release",
+        "lint": "eslint src --ext .ts --quiet",
+        "format": "prettier src/**/*.ts --write"
+    },
+    "bin": "dist/index.js",
+    "pkg": {
+        "scripts": "dist/**/*.js"
+    },
+    "dependencies": {
+        "axios": "^0.19.2",
+        "iconv-lite": "^0.5.1",
+        "jschardet": "^2.1.1",
+        "yargs": "^15.3.1"
+    },
+    "devDependencies": {
+        "@types/node": "^13.13.4",
+        "@types/yargs": "^15.0.4",
+        "@typescript-eslint/eslint-plugin": "^2.30.0",
+        "@typescript-eslint/parser": "^2.30.0",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb-typescript": "^7.2.1",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-prettier": "^3.1.3",
+        "pkg": "^4.4.8",
+        "prettier": "^2.0.5",
+        "typescript": "^3.9.0-beta"
+    }
 }

@@ -28,14 +28,17 @@ async function main(): Promise<void> {
             type: 'string',
         })
         .option('e', {
-            alias: "encoding",
+            alias: 'encoding',
             describe: 'Input file encoding. Auto-detect if not provided.',
             type: 'string',
-        })
-        .argv;
+        }).argv;
 
     if (!(converters as string[]).includes(args.c)) {
-        throw new Error(`Unknown converter "${args.c}". It should be one of:\n  [${converters.join(', ')}]`);
+        throw new Error(
+            `Unknown converter "${
+                args.c
+            }". It should be one of:\n  [${converters.join(', ')}]`,
+        );
     }
 
     const cwd = process.cwd();
@@ -43,12 +46,12 @@ async function main(): Promise<void> {
     const inPath = path.resolve(cwd, args.i);
     const outPath = path.resolve(cwd, args.o);
 
-    if (!await isFilePathExist(inPath)) {
+    if (!(await isFilePathExist(inPath))) {
         throw new Error(`File "${args.i}" does not exist.`);
     }
 
     if (args.e && !iconv.encodingExists(args.e)) {
-        throw new Error(`Unknown encoding "${args.e}".`)
+        throw new Error(`Unknown encoding "${args.e}".`);
     }
 
     if (inPath === outPath) {
