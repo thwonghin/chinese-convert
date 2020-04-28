@@ -10,7 +10,13 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "start": "tsc && node dist/index.js"
+    "clean": "rm -rf dist || true",
+    "start": "tsc && node dist/index.js",
+    "build": "tsc && pkg . --out-path release"
+  },
+  "bin": "dist/index.js",
+  "pkg": {
+    "scripts": "dist/**/*.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -21,6 +27,7 @@
   "devDependencies": {
     "@types/node": "^13.13.4",
     "@types/yargs": "^15.0.4",
+    "pkg": "^4.4.8",
     "typescript": "^3.9.0-beta"
   }
 }

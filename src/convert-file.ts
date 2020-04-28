@@ -27,12 +27,12 @@ export async function convertFile({
     const fileBuffer = await fs.promises.readFile(inPath);
     const encoding = inEncoding || jschardet.detect(fileBuffer, {
         minimumThreshold: 0.96
-    }).encoding.toLowerCase();
+    }).encoding;
 
     if (!encoding) {
         throw new Error('Cannot detect encoding, please enter encoding manually. See --help.')
     }
-    const fileContent = iconv.decode(fileBuffer, encoding);
+    const fileContent = iconv.decode(fileBuffer, encoding.toLowerCase());
 
     const fanHuaJi = new FanHuaJi();
 
