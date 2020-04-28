@@ -1,0 +1,27 @@
+on:
+  push:
+    tags:
+      'v*'
+
+name: Create Release
+
+jobs:
+  build:
+    name: Build Artifacts
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Build project
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.0.0'
+        run: |
+          yarn
+          yarn build
+      - name: Create Release
+        uses: meeDamian/github-release@2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: release/
