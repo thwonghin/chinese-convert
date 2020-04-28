@@ -13,10 +13,11 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      - name: Build project
+      - name: Use Node
         uses: actions/setup-node@v1
         with:
           node-version: '14.0.0'
+      - name: Build Project
         run: |
           yarn
           yarn build
