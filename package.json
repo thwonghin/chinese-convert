@@ -6,7 +6,6 @@
   "main": "dist/index.js",
   "author": "Hin Wong <fraywong@gmail.com>",
   "license": "MIT",
-  "type": "module",
   "engines": {
     "node": ">=14.0.0"
   },

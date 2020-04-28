@@ -1,4 +1,4 @@
-import fs from 'fs';
+import * as fs from 'fs';
 
 export async function isFilePathExist(filePath: string): Promise<boolean> {
     try {

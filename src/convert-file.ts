@@ -1,10 +1,10 @@
-import fs from 'fs';
-import path from 'path';
-import jschardet from 'jschardet';
-import iconv from 'iconv-lite';
+import * as fs from 'fs';
+import * as path from 'path';
+import * as jschardet from 'jschardet';
+import * as iconv from 'iconv-lite';
 
-import { FanHuaJi } from './libs/fanhuaji/index.js';
-import { Converter } from './libs/fanhuaji/types.js';
+import { FanHuaJi } from './libs/fanhuaji/index';
+import { Converter } from './libs/fanhuaji/types';
 
 interface ConvertFileParams {
     inPath: string;
@@ -25,7 +25,13 @@ export async function convertFile({
     converter,
 }: ConvertFileParams): Promise<ConvertFileResult> {
     const fileBuffer = await fs.promises.readFile(inPath);
-    const encoding = inEncoding || jschardet.detect(fileBuffer).encoding.toLowerCase();
+    const encoding = inEncoding || jschardet.detect(fileBuffer, {
+        minimumThreshold: 0.96
+    }).encoding.toLowerCase();
+
+    if (!encoding) {
+        throw new Error('Cannot detect encoding, please enter encoding manually. See --help.')
+    }
     const fileContent = iconv.decode(fileBuffer, encoding);
 
     const fanHuaJi = new FanHuaJi();

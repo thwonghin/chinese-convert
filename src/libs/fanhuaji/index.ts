@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 
-import { ConvertRequestParams, ConvertResponse, Converter, Response } from './types.js';
+import { ConvertRequestParams, ConvertResponse, Converter, Response } from './types';
 
 export const converters: Converter[] = [
     Converter.BPMF,
