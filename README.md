@@ -12,7 +12,7 @@ Command line interface to convert between Chinese text.
 # Convert all "in/*.txt" files to Hong Kong Chinese and output to "out" folder
 chinese-convert-cli -o out -c Hongkong in/*.txt
 
-# Convert all "in1/1.txt" and "in2/2.txt" files to Taiwan Chinese and output in the same input file's folder named as `*-new.txt`
+# Convert "in1/1.txt" and "in2/2.txt" files to Taiwan Chinese and output in the input file's folder named as `*-new.txt`
 chinese-convert-cli -c Taiwan in1/1.txt in2/2.txt
 ```
 
