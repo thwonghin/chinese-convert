@@ -4,7 +4,7 @@
     "description": "Command line interface to convert between Chinese text.",
     "repository": "git@github.com:thwonghin/chinese-convert-cli.git",
     "main": "dist/index.js",
-    "author": "Hin Wong <fraywong@gmail.com>",
+    "author": "Hin Wong <thwong.henry@gmail.com>",
     "license": "MIT",
     "engines": {
         "node": ">=14.0.0"
