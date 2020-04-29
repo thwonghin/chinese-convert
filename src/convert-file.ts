@@ -5,6 +5,7 @@ import * as iconv from 'iconv-lite';
 
 import { FanHuaJi } from './libs/fanhuaji/index';
 import { Converter } from './libs/fanhuaji/types';
+import { isFile, isFilePathExist } from './utils';
 
 interface ConvertFileParams {
     inPath: string;
@@ -16,6 +17,28 @@ interface ConvertFileParams {
 interface ConvertFileResult {
     text: string;
     diff: string | null;
+}
+
+async function resolveOutPath({
+    inPath,
+    outPath,
+}: Pick<ConvertFileParams, 'inPath' | 'outPath'>): Promise<string> {
+    let result = outPath;
+
+    if (!(await isFilePathExist(outPath)) || !(await isFile(outPath))) {
+        result = path.resolve(`${outPath}`, path.basename(inPath));
+    }
+
+    if (inPath === result) {
+        const parsed = path.parse(result);
+        return path.format({
+            ...parsed,
+            name: `${parsed.name}-new`,
+            base: undefined,
+        });
+    }
+
+    return result;
 }
 
 export async function convertFile({
@@ -45,8 +68,13 @@ export async function convertFile({
         converter,
     });
 
-    await fs.promises.mkdir(path.dirname(outPath), { recursive: true });
-    await fs.promises.writeFile(outPath, result.data.text, 'utf-8');
+    const resolvedOutPath = await resolveOutPath({
+        inPath,
+        outPath,
+    });
+
+    await fs.promises.mkdir(path.dirname(resolvedOutPath), { recursive: true });
+    await fs.promises.writeFile(resolvedOutPath, result.data.text, 'utf-8');
 
     return {
         text: result.data.text,

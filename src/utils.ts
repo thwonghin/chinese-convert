@@ -8,3 +8,8 @@ export async function isFilePathExist(filePath: string): Promise<boolean> {
         return false;
     }
 }
+
+export async function isFile(filePath: string): Promise<boolean> {
+    const lstat = await fs.promises.lstat(filePath);
+    return lstat.isFile();
+}

@@ -1,29 +1,33 @@
 import * as yargs from 'yargs';
 import * as iconv from 'iconv-lite';
 import * as path from 'path';
+import * as fg from 'fast-glob';
 
 import { converters } from './libs/fanhuaji/index';
 import { Converter } from './libs/fanhuaji/types';
-import { isFilePathExist } from './utils';
 import { convertFile } from './convert-file';
 
 async function main(): Promise<void> {
     const args = yargs
-        .option('i', {
-            alias: 'in',
-            describe: 'Input file path',
-            demand: true,
-            type: 'string',
-        })
+        .usage('Usage: $0 [file glob patterns]')
+        .example(
+            '$0 -c Hongkong -o out in/*.txt',
+            'convert all "in/*.txt" files to Hong Kong Chinese and output to "out" folder',
+        )
+        .help('h')
+        .alias('h', 'help')
+        .version('v')
+        .alias('v', 'version')
         .option('o', {
             alias: 'out',
             describe: 'Output file path',
-            demand: true,
             type: 'string',
         })
         .option('c', {
             alias: 'converter',
-            describe: 'FanHuaJi converter name',
+            describe: `FanHuaJi converter name.\nSupported: [${converters.join(
+                ', ',
+            )}]`,
             demand: true,
             type: 'string',
         })
@@ -43,27 +47,34 @@ async function main(): Promise<void> {
 
     const cwd = process.cwd();
 
-    const inPath = path.resolve(cwd, args.i);
-    const outPath = path.resolve(cwd, args.o);
+    const outPath = args.o ? path.resolve(cwd, args.o) : null;
 
-    if (!(await isFilePathExist(inPath))) {
-        throw new Error(`File "${args.i}" does not exist.`);
+    const inFiles = args._;
+    const entries = await fg(inFiles);
+
+    if (entries.length === 0) {
+        if (inFiles.length > 0) {
+            throw new Error('Files do not exist.');
+        } else {
+            yargs.showHelp('log');
+            return;
+        }
     }
 
     if (args.e && !iconv.encodingExists(args.e)) {
         throw new Error(`Unknown encoding "${args.e}".`);
     }
 
-    if (inPath === outPath) {
-        throw new Error('In and out filepath cannot be the same.');
-    }
-
-    await convertFile({
-        inPath,
-        outPath,
-        converter: args.c as Converter,
-        inEncoding: args.e,
-    });
+    await Promise.all(
+        entries.map((entry) =>
+            convertFile({
+                inPath: path.resolve(cwd, entry),
+                outPath: outPath || path.dirname(entry),
+                converter: args.c as Converter,
+                inEncoding: args.e,
+            }),
+        ),
+    );
 
     console.log('Conversion done!');
 }

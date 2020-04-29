@@ -13,7 +13,7 @@
         "clean": "rm -rf dist || true",
         "start": "yarn build && node dist/index.js",
         "build": "tsc",
-        "package": "pkg . --out-path release",
+        "package": "mkdir -p release && pkg . --out-path release",
         "lint": "eslint src --ext .ts --quiet",
         "format": "prettier src/**/*.ts --write"
     },
@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "axios": "^0.19.2",
+        "fast-glob": "^3.2.2",
         "iconv-lite": "^0.5.1",
         "jschardet": "^2.1.1",
         "yargs": "^15.3.1"

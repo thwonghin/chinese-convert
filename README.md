@@ -6,19 +6,36 @@ Command line interface to convert between Chinese text.
 
 本程式使用了[繁化姬 (Fanhuaji)](https://zhconvert.org/) 的 API 服務。
 
-## Usage
+## Example
 
-```sh
+```bash
+# Convert all "in/*.txt" files to Hong Kong Chinese and output to "out" folder
+chinese-convert-cli -o out -c Hongkong in/*.txt
+
+# Convert all "in1/1.txt" and "in2/2.txt" files to Taiwan Chinese and output in the same input file's folder named as `*-new.txt`
+chinese-convert-cli -c Taiwan in1/1.txt in2/2.txt
+```
+
+Read more usage with `--help`.
+
+## Development
+
+### Prerequisite
+
+- \>= Node v14 (or `nvm install`)
+- This project uses `yarn` as dependency management tool
+
+### Run
+
+```bash
+# Install dependencies
 yarn
-yarn start --help
 
-Options:
-  --help           Show help                                           [boolean]
-  --version        Show version number                                 [boolean]
-  -i, --in         Input file path                           [string] [required]
-  -o, --out        Output file path                          [string] [required]
-  -c, --converter  Fanhuaji converter name                   [string] [required]
-  -e, --encoding   Input file encoding. Auto-detect if not provided.    [string]
+# Run this project
+yarn start
+
+# Build release to `release/` folder
+yarn build && yarn package
 ```
 
 ## TODO
