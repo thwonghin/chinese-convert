@@ -7,7 +7,7 @@
     "author": "Hin Wong <thwong.henry@gmail.com>",
     "license": "MIT",
     "engines": {
-        "node": ">=14.0.0"
+        "node": ">=14.1.0"
     },
     "scripts": {
         "clean": "rm -rf dist || true",
@@ -40,6 +40,6 @@
         "eslint-plugin-prettier": "^3.1.3",
         "pkg": "^4.4.8",
         "prettier": "^2.0.5",
-        "typescript": "^3.9.0-beta"
+        "typescript": "^3.9.1-rc"
     }
 }
