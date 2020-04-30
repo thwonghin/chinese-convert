@@ -17,6 +17,9 @@ jobs:
       - name: Install Dependencies
         run: |
           yarn
+      - name: Check Dependency Vulnerabilities
+        run: |
+          yarn audit
       - name: Run Lint
         run: |
           yarn lint
