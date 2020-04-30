@@ -1,6 +1,6 @@
 on:
   push:
-    tags-ignore: '*'
+    tags-ignore: 'v*'
 
 name: Test
 
