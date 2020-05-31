@@ -35,6 +35,12 @@ async function main(): Promise<void> {
             alias: 'encoding',
             describe: 'Input file encoding. Auto-detect if not provided.',
             type: 'string',
+        })
+        .option('r', {
+            alias: 'replace',
+            describe:
+                'Translate the input file and replace it. Will ignore --out argument',
+            type: 'boolean',
         }).argv;
 
     if (!(converters as string[]).includes(args.c)) {
@@ -72,6 +78,7 @@ async function main(): Promise<void> {
                 outPath: outPath || path.dirname(entry),
                 converter: args.c as Converter,
                 inEncoding: args.e,
+                shouldReplace: args.r,
             }),
         ),
     );

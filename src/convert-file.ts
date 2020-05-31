@@ -10,6 +10,7 @@ import { isFile, isFilePathExist } from './utils';
 interface ConvertFileParams {
     inPath: string;
     outPath: string;
+    shouldReplace: boolean;
     inEncoding?: string;
     converter: Converter;
 }
@@ -22,7 +23,14 @@ interface ConvertFileResult {
 async function resolveOutPath({
     inPath,
     outPath,
-}: Pick<ConvertFileParams, 'inPath' | 'outPath'>): Promise<string> {
+    shouldReplace,
+}: Pick<ConvertFileParams, 'inPath' | 'outPath' | 'shouldReplace'>): Promise<
+    string
+> {
+    if (shouldReplace) {
+        return inPath;
+    }
+
     let result = outPath;
 
     if (!(await isFilePathExist(outPath)) || !(await isFile(outPath))) {
@@ -44,6 +52,7 @@ async function resolveOutPath({
 export async function convertFile({
     inPath,
     outPath,
+    shouldReplace,
     inEncoding,
     converter,
 }: ConvertFileParams): Promise<ConvertFileResult> {
@@ -71,6 +80,7 @@ export async function convertFile({
     const resolvedOutPath = await resolveOutPath({
         inPath,
         outPath,
+        shouldReplace,
     });
 
     await fs.promises.mkdir(path.dirname(resolvedOutPath), { recursive: true });
