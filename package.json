@@ -23,7 +23,7 @@
     },
     "dependencies": {
         "axios": "^0.19.2",
-        "fast-glob": "^3.2.2",
+        "fast-glob": "^3.2.4",
         "iconv-lite": "^0.5.1",
         "jschardet": "^2.1.1",
         "yargs": "^15.3.1"
