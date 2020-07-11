@@ -1,4 +1,7 @@
 import * as fs from 'fs';
+import * as path from 'path';
+import * as jschardet from 'jschardet';
+import * as iconv from 'iconv-lite';
 
 export async function isFilePathExist(filePath: string): Promise<boolean> {
     try {
@@ -12,4 +15,41 @@ export async function isFilePathExist(filePath: string): Promise<boolean> {
 export async function isFile(filePath: string): Promise<boolean> {
     const lstat = await fs.promises.lstat(filePath);
     return lstat.isFile();
+}
+
+interface GetFileContentParams {
+    filePath: string;
+    providedEncoding?: string;
+}
+
+export async function getFileContent({
+    filePath,
+    providedEncoding,
+}: GetFileContentParams): Promise<string> {
+    const fileBuffer = await fs.promises.readFile(filePath);
+    const encoding =
+        providedEncoding ||
+        jschardet.detect(fileBuffer, {
+            minimumThreshold: 0.96,
+        }).encoding;
+
+    if (!encoding) {
+        throw new Error(
+            'Cannot detect encoding, please enter encoding manually. See --help.',
+        );
+    }
+    return iconv.decode(fileBuffer, encoding.toLowerCase());
+}
+
+interface CreateAndWriteFileParams {
+    filePath: string;
+    content: string;
+}
+
+export async function createAndWriteFile({
+    filePath,
+    content,
+}: CreateAndWriteFileParams): Promise<void> {
+    await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
+    await fs.promises.writeFile(filePath, content, 'utf-8');
 }
