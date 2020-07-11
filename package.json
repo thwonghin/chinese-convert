@@ -11,6 +11,7 @@
     },
     "scripts": {
         "test:unit": "jest tests/unit",
+        "test:integration": "jest tests/integration",
         "clean": "rm -rf dist || true",
         "start": "yarn build && node dist/index.js",
         "build": "tsc",
