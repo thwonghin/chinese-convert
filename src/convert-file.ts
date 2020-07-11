@@ -56,6 +56,7 @@ export async function convertFile({
     inEncoding,
     converter,
 }: ConvertFileParams): Promise<ConvertFileResult> {
+    console.log('Converting', inPath);
     const fileBuffer = await fs.promises.readFile(inPath);
     const encoding =
         inEncoding ||
@@ -86,6 +87,7 @@ export async function convertFile({
     await fs.promises.mkdir(path.dirname(resolvedOutPath), { recursive: true });
     await fs.promises.writeFile(resolvedOutPath, result.data.text, 'utf-8');
 
+    console.log('Done converting', inPath);
     return {
         text: result.data.text,
         diff: result.data.diff,
