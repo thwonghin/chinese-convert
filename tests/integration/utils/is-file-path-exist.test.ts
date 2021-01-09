@@ -14,7 +14,6 @@ describe('isFilePathExist', () => {
         ${'the path does not resolve'} | ${'./random'}                     | ${false}
     `('when $condition', (testParameters: TestParameters) => {
         it('should return correct result', async () => {
-            expect.assertions(1);
             expect(
                 await isFilePathExist(
                     path.resolve(__dirname, testParameters.filepath),

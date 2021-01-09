@@ -10,13 +10,13 @@ function mockConvertResponse(data: any) {
     axiosMock.onPost('https://api.zhconvert.org/convert').reply(200, data);
 }
 
-describe('fanHuaJi', () => {
-    describe('when the API response is code === 0', () => {
-        let fanhuaji: FanHuaJi;
-        let response: ConvertResponse;
-        let error: Error;
+describe('FanHuaJi', () => {
+    let fanhuaji: FanHuaJi;
+    let response: ConvertResponse;
+    let error: Error;
 
-        async function setup() {
+    describe('when the API response is code === 0', () => {
+        beforeAll(async () => {
             fanhuaji = new FanHuaJi();
             mockConvertResponse({code: 0});
 
@@ -28,42 +28,32 @@ describe('fanHuaJi', () => {
             } catch (error_: unknown) {
                 error = error_ as Error;
             }
-        }
+        });
 
-        async function teardown() {
+        afterAll(() => {
             axiosMock.reset();
-        }
+        });
 
-        it('should call API with correct params', async () => {
-            expect.assertions(3);
-            await setup();
+        it('should call API with correct params', () => {
             expect(axiosMock.history.post[0].baseURL).toBe(
                 'https://api.zhconvert.org',
             );
             expect(axiosMock.history.post[0].url).toBe('/convert');
-            expect(JSON.parse(axiosMock.history.post[0].data)).toStrictEqual({
+            expect(JSON.parse(axiosMock.history.post[0].data)).toEqual({
                 text: 'test',
                 converter: Converter.HK,
             });
-            await teardown();
         });
 
-        it('should return correct result', async () => {
-            expect.assertions(1);
-            await setup();
-            expect(response).toStrictEqual({
+        it('should return correct result', () => {
+            expect(response).toEqual({
                 code: 0,
             });
-            await teardown();
         });
     });
 
     describe('when the API response is code !== 0', () => {
-        let fanhuaji: FanHuaJi;
-        let response: ConvertResponse;
-        let error: Error;
-
-        async function setup() {
+        beforeAll(async () => {
             fanhuaji = new FanHuaJi();
             mockConvertResponse({code: 100, msg: 'Unknown Error'});
 
@@ -75,31 +65,25 @@ describe('fanHuaJi', () => {
             } catch (error_: unknown) {
                 error = error_ as Error;
             }
-        }
+        });
 
-        async function teardown() {
+        afterAll(() => {
             axiosMock.reset();
-        }
+        });
 
-        it('should call API with correct params', async () => {
-            expect.assertions(3);
-            await setup();
+        it('should call API with correct params', () => {
             expect(axiosMock.history.post[0].baseURL).toBe(
                 'https://api.zhconvert.org',
             );
             expect(axiosMock.history.post[0].url).toBe('/convert');
-            expect(JSON.parse(axiosMock.history.post[0].data)).toStrictEqual({
+            expect(JSON.parse(axiosMock.history.post[0].data)).toEqual({
                 text: 'test',
                 converter: Converter.HK,
             });
-            await teardown();
         });
 
-        it('should have correct error message', async () => {
-            expect.assertions(1);
-            await setup();
+        it('should have correct error message', () => {
             expect(error.message).toBe('Unknown Error (100)');
-            await teardown();
         });
     });
 });

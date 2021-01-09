@@ -20,7 +20,7 @@ describe('getFileContent', () => {
         ${'provided custom encoding for auto detectable file'} | ${'big5.txt'}         | ${'utf8'}    | ${'���դ@�G�T�|����'}  | ${false}
         ${'provided custom encoding for undetectable file'}    | ${'undetectable.txt'} | ${'big5'}    | ${'測試'}             | ${false}
     `('when $condition', (testParameters: TestParameters) => {
-        async function setup() {
+        beforeAll(async () => {
             try {
                 result = await getFileContent({
                     filePath: path.resolve(__dirname, testParameters.filename),
@@ -29,23 +29,17 @@ describe('getFileContent', () => {
             } catch (error_: unknown) {
                 error = error_ as Error;
             }
-        }
+        });
 
         if (testParameters.isError) {
-            it('should throw error', async () => {
-                expect.assertions(1);
-                await setup();
-
+            it('should throw error', () => {
                 expect(error.message).toBe(
                     'Cannot detect encoding, please enter encoding manually. See --help.',
                 );
             });
         } else {
-            it('should return correct result', async () => {
-                expect.assertions(1);
-                await setup();
-
-                expect(result).toStrictEqual(testParameters.result);
+            it('should return correct result', () => {
+                expect(result).toEqual(testParameters.result);
             });
         }
     });

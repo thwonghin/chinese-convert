@@ -21,11 +21,11 @@ async function initSetup(): Promise<void> {
     );
 }
 
-async function tearSetup(): Promise<void> {
+afterAll(async () => {
     await fs.promises.rmdir(temporaryDirectoryPath, {
         recursive: true,
     });
-}
+});
 
 describe('createAndWriteFile', () => {
     describe.each`
@@ -34,9 +34,7 @@ describe('createAndWriteFile', () => {
         ${'directory exists'}          | ${'test2.txt'}
         ${'file exists'}               | ${existingFileName}
     `('when $condition', (testParameters: TestParameters) => {
-        it('should write file with correct content', async () => {
-            expect.assertions(1);
-
+        beforeAll(async () => {
             await initSetup();
 
             await createAndWriteFile({
@@ -46,15 +44,15 @@ describe('createAndWriteFile', () => {
                 ),
                 content: 'test-content',
             });
+        });
 
+        it('should write file with correct content', async () => {
             const result = await fs.promises.readFile(
                 path.resolve(temporaryDirectoryPath, testParameters.filepath),
                 'utf8',
             );
 
             expect(result).toBe('test-content');
-
-            await tearSetup();
         });
     });
 });

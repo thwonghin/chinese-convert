@@ -4,7 +4,10 @@ module.exports = {
     overrides: [
         {
             "files": "tests/**/*.ts",
-            extends: ["plugin:jest/all"]
+            extends: [
+                'plugin:jest/recommended', 
+                'plugin:jest/style',
+            ]
         }
     ]
 };
