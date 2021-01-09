@@ -17,7 +17,7 @@
         "build": "tsc",
         "package": "mkdir -p release && pkg . --out-path release",
         "lint": "xo",
-        "format": "prettier src/**/*.ts --write"
+        "lint:fix": "xo --fix"
     },
     "bin": "dist/index.js",
     "pkg": {
