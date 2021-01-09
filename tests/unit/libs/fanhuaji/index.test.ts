@@ -1,8 +1,8 @@
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 
-import { FanHuaJi } from '@/libs/fanhuaji';
-import { Converter, ConvertResponse } from '@/libs/fanhuaji/types';
+import {FanHuaJi} from '@/libs/fanhuaji';
+import {Converter, ConvertResponse} from '@/libs/fanhuaji/types';
 
 const axiosMock = new MockAdapter(axios);
 
@@ -12,22 +12,21 @@ function mockConvertResponse(data: any) {
 
 describe('FanHuaJi', () => {
     let fanhuaji: FanHuaJi;
-    let res: ConvertResponse;
+    let response: ConvertResponse;
     let error: Error;
 
     describe('when the API response is code === 0', () => {
         beforeAll(async () => {
             fanhuaji = new FanHuaJi();
-            mockConvertResponse({ code: 0 });
+            mockConvertResponse({code: 0});
 
             try {
-                res = await fanhuaji.convert({
+                response = await fanhuaji.convert({
                     text: 'test',
                     converter: Converter.HK,
                 });
-            } catch (e) {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                error = e;
+            } catch (error_: unknown) {
+                error = error_ as Error;
             }
         });
 
@@ -47,7 +46,7 @@ describe('FanHuaJi', () => {
         });
 
         it('should return correct result', () => {
-            expect(res).toEqual({
+            expect(response).toEqual({
                 code: 0,
             });
         });
@@ -56,16 +55,15 @@ describe('FanHuaJi', () => {
     describe('when the API response is code !== 0', () => {
         beforeAll(async () => {
             fanhuaji = new FanHuaJi();
-            mockConvertResponse({ code: 100, msg: 'Unknown Error' });
+            mockConvertResponse({code: 100, msg: 'Unknown Error'});
 
             try {
-                res = await fanhuaji.convert({
+                response = await fanhuaji.convert({
                     text: 'test',
                     converter: Converter.HK,
                 });
-            } catch (e) {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                error = e;
+            } catch (error_: unknown) {
+                error = error_ as Error;
             }
         });
 

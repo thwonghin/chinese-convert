@@ -1,9 +1,9 @@
-import { FanHuaJi } from '../libs/fanhuaji/index';
-import { Converter } from '../libs/fanhuaji/types';
-import { resolveOutPath } from './helpers';
-import { getFileContent, createAndWriteFile } from '../utils';
+import {FanHuaJi} from '../libs/fanhuaji/index';
+import {Converter} from '../libs/fanhuaji/types';
+import {resolveOutPath} from './helpers';
+import {getFileContent, createAndWriteFile} from '../utils';
 
-interface ConvertFileParams {
+interface ConvertFileParameters {
     fanHuaJi: FanHuaJi;
     inPath: string;
     outPath: string;
@@ -24,7 +24,7 @@ export async function convertFile({
     shouldReplace,
     inEncoding,
     converter,
-}: ConvertFileParams): Promise<ConvertFileResult> {
+}: ConvertFileParameters): Promise<ConvertFileResult> {
     console.log('Converting', inPath);
 
     const fileContent = await getFileContent({

@@ -1,8 +1,8 @@
 import * as path from 'path';
 
-import { isFile, isFilePathExist } from '../utils';
+import {isFile, isFilePathExist} from '../utils';
 
-interface ResolveOutPathParams {
+interface ResolveOutPathParameters {
     inPath: string;
     outPath: string;
     shouldReplace: boolean;
@@ -12,7 +12,7 @@ export async function resolveOutPath({
     inPath,
     outPath,
     shouldReplace,
-}: ResolveOutPathParams): Promise<string> {
+}: ResolveOutPathParameters): Promise<string> {
     if (shouldReplace) {
         return inPath;
     }

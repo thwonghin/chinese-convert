@@ -7,7 +7,7 @@ export async function isFilePathExist(filePath: string): Promise<boolean> {
     try {
         await fs.promises.access(filePath);
         return true;
-    } catch (e) {
+    } catch {
         return false;
     }
 }
@@ -17,7 +17,7 @@ export async function isFile(filePath: string): Promise<boolean> {
     return lstat.isFile();
 }
 
-interface GetFileContentParams {
+interface GetFileContentParameters {
     filePath: string;
     providedEncoding?: string;
 }
@@ -25,7 +25,7 @@ interface GetFileContentParams {
 export async function getFileContent({
     filePath,
     providedEncoding,
-}: GetFileContentParams): Promise<string> {
+}: GetFileContentParameters): Promise<string> {
     const fileBuffer = await fs.promises.readFile(filePath);
     const encoding =
         providedEncoding ||
@@ -38,10 +38,11 @@ export async function getFileContent({
             'Cannot detect encoding, please enter encoding manually. See --help.',
         );
     }
+
     return iconv.decode(fileBuffer, encoding.toLowerCase());
 }
 
-interface CreateAndWriteFileParams {
+interface CreateAndWriteFileParameters {
     filePath: string;
     content: string;
 }
@@ -49,7 +50,7 @@ interface CreateAndWriteFileParams {
 export async function createAndWriteFile({
     filePath,
     content,
-}: CreateAndWriteFileParams): Promise<void> {
-    await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
+}: CreateAndWriteFileParameters): Promise<void> {
+    await fs.promises.mkdir(path.dirname(filePath), {recursive: true});
     await fs.promises.writeFile(filePath, content, 'utf-8');
 }
