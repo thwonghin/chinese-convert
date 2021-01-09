@@ -3,12 +3,12 @@ module.exports = {
     testEnvironment: 'node',
     moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/src/$1',
-        '^lodash-es$': 'lodash', // workaround for es module
+        '^lodash-es$': 'lodash', // Workaround for es module
     },
     globals: {
         'ts-jest': {
             isolatedModules: true,
-            tsConfig: 'tests/tsconfig.json',
+            tsconfig: 'tests/tsconfig.json',
         },
     },
 };

@@ -1,7 +1,7 @@
 import * as path from 'path';
-import { isFile } from '@/utils';
+import {isFile} from '@/utils';
 
-interface TestParams {
+interface TestParameters {
     filepath: string;
     result: boolean;
 }
@@ -11,19 +11,21 @@ describe('isFilePathExist', () => {
         condition                    | filepath                          | result
         ${'the path is a file'}      | ${'./is-file-path-exist.test.ts'} | ${true}
         ${'the path is a directory'} | ${'../utils'}                     | ${false}
-    `('when $condition', (testParams: TestParams) => {
+    `('when $condition', (testParameters: TestParameters) => {
         it('should return correct result', async () => {
+            expect.assertions(1);
             expect(
-                await isFile(path.resolve(__dirname, testParams.filepath)),
-            ).toBe(testParams.result);
+                await isFile(path.resolve(__dirname, testParameters.filepath)),
+            ).toBe(testParameters.result);
         });
     });
 
     describe('when the file does not exists', () => {
         it('should throw error', async () => {
+            expect.assertions(1);
             await expect(
                 isFile(path.resolve(__dirname, 'random')),
-            ).rejects.toThrow();
+            ).rejects.toThrow('');
         });
     });
 });

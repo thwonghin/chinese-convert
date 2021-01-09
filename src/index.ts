@@ -1,11 +1,13 @@
+#!/usr/bin/env node
+
 import * as yargs from 'yargs';
 import * as iconv from 'iconv-lite';
 import * as path from 'path';
 import * as fg from 'fast-glob';
 
-import { converters, FanHuaJi } from './libs/fanhuaji';
-import { Converter } from './libs/fanhuaji/types';
-import { convertFile } from './convert-file';
+import {converters, FanHuaJi} from './libs/fanhuaji';
+import {Converter} from './libs/fanhuaji/types';
+import {convertFile} from './convert-file';
 
 async function main(): Promise<void> {
     const args = yargs
@@ -74,7 +76,7 @@ async function main(): Promise<void> {
     const fanHuaJi = new FanHuaJi();
 
     await Promise.all(
-        entries.map((entry) =>
+        entries.map(async (entry) =>
             convertFile({
                 fanHuaJi,
                 inPath: path.resolve(cwd, entry),

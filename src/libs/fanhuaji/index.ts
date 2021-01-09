@@ -1,7 +1,7 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, {AxiosInstance} from 'axios';
 
 import {
-    ConvertRequestParams,
+    ConvertRequestParameters,
     ConvertResponse,
     Converter,
     Response,
@@ -36,11 +36,11 @@ export class FanHuaJi {
     }
 
     public async convert(
-        params: ConvertRequestParams,
+        parameters: ConvertRequestParameters,
     ): Promise<ConvertResponse> {
         const response = await this.#api.post<ConvertResponse>(
             '/convert',
-            params,
+            parameters,
         );
 
         throwIfError(response.data);

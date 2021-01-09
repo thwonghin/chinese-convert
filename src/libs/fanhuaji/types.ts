@@ -1,5 +1,5 @@
 // https://docs.zhconvert.org/api/getting-started/#通用的-api-參數
-type RequestParams<T> = {
+type RequestParameters<T> = {
     apiKey?: string;
     outputFormat?: 'json' | 'yaml' | 'php';
     prettify?: boolean;
@@ -32,7 +32,7 @@ export const enum Converter {
 }
 
 // https://docs.zhconvert.org/api/convert/#convert
-export type ConvertRequestParams = RequestParams<{
+export type ConvertRequestParameters = RequestParameters<{
     // https://docs.zhconvert.org/api/convert/#必填
     text: string;
     converter: Converter;
