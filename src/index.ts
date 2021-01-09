@@ -56,7 +56,7 @@ async function main(): Promise<void> {
     const outPath = args.o ? path.resolve(cwd, args.o) : null;
 
     const inFiles = args._;
-    const entries = await fg(inFiles);
+    const entries = await fg(inFiles.map((inFile) => `${inFile}`));
 
     if (entries.length === 0) {
         if (inFiles.length > 0) {
