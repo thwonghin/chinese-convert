@@ -1,6 +1,6 @@
-# Chinese Convert CLI
+# Chinese Convert
 
-![Test](https://github.com/thwonghin/chinese-convert-cli/workflows/Test/badge.svg)
+![Test](https://github.com/thwonghin/chinese-convert/workflows/Test/badge.svg)
 
 Command line interface to convert between Chinese text.
 

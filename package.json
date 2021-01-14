@@ -1,8 +1,8 @@
 {
-    "name": "chinese-convert-cli",
+    "name": "chinese-convert",
     "version": "1.3.8",
     "description": "Command line interface to convert between Chinese text.",
-    "repository": "git@github.com:thwonghin/chinese-convert-cli.git",
+    "repository": "git@github.com:thwonghin/chinese-convert.git",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "author": "Hin Wong <thwong.henry@gmail.com>",
@@ -18,7 +18,7 @@
         "build": "tsc",
         "lint": "xo",
         "lint:fix": "xo --fix",
-        "version": "npx conventional-changelog-cli -p chinese-convert-cli -i CHANGELOG.md -s && git add CHANGELOG.md",
+        "version": "npx conventional-changelog-cli -p chinese-convert -i CHANGELOG.md -s && git add CHANGELOG.md",
         "prepublishOnly": "npm shrinkwrap && tsc"
     },
     "keywords": [
