@@ -9,6 +9,12 @@ Command line interface to convert between Chinese text.
 ## Example
 
 ```bash
+# Install globally
+npm install -g chinese-convert
+
+# Convert all "in/*.html" files to Hong Kong Chinese in-place
+chinese-convert -r in/*.html -c Hongkong
+
 # Convert all "in/*.txt" files to Hong Kong Chinese and output to "out" folder
 chinese-convert -o out -c Hongkong in/*.txt
 
@@ -17,6 +23,26 @@ chinese-convert -c Taiwan in1/1.txt in2/2.txt
 ```
 
 Read more usage with `--help`.
+```
+Usage: chinese-convert [file glob patterns]
+
+Options:
+  -h, --help       Show help                                           [boolean]
+  -o, --out        Output file path                                     [string]
+  -c, --converter  FanHuaJi converter name.
+                   Supported: [Bopomofo, China, Hongkong, Mars, Pinyin,
+                   Simplified, Traditional, Taiwan, WikiSimplified,
+                   WikiTraditional]                          [string] [required]
+  -e, --encoding   Input file encoding. Auto-detect if not provided.    [string]
+  -r, --replace    Translate the input file and replace it. Will ignore --out
+                   argument                                            [boolean]
+  -v, --version    Show version number                                 [boolean]
+
+Examples:
+  chinese-convert -c Hongkong -o out        convert all "in/*.txt" files to Hong
+  in/*.txt                                  Kong Chinese and output to "out"
+                                            folder
+```
 
 ## Development
 
