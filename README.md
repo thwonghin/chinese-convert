@@ -10,7 +10,10 @@ Command line interface to convert between Chinese text.
 
 ```bash
 # Install globally
-npm install -g chinese-convert-cli
+npm install -g chinese-convert
+
+# Convert all "in/*.html" files to Hong Kong Chinese in-place
+chinese-convert -r in/*.html -c Hongkong
 
 # Convert all "in/*.txt" files to Hong Kong Chinese and output to "out" folder
 chinese-convert -o out -c Hongkong in/*.txt

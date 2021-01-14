@@ -19,7 +19,7 @@
         "lint": "xo",
         "lint:fix": "xo --fix",
         "version": "npx conventional-changelog-cli -p chinese-convert -i CHANGELOG.md -s && git add CHANGELOG.md",
-        "prepublishOnly": "npm shrinkwrap && tsc"
+        "prepublishOnly": "npm shrinkwrap && yarn build"
     },
     "keywords": [
         "cli",
