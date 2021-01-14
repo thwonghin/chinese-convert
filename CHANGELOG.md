@@ -1,3 +1,9 @@
+## <small>1.3.6 (2021-01-14)</small>
+
+* chore: update README.md ([29e1966](https://github.com/thwonghin/chinese-convert-cli/commit/29e1966))
+
+
+
 ## <small>1.3.5 (2021-01-14)</small>
 
 * chore: add keywords ([020eb62](https://github.com/thwonghin/chinese-convert-cli/commit/020eb62))
