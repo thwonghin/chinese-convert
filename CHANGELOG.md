@@ -1,3 +1,9 @@
+## <small>1.3.8 (2021-01-14)</small>
+
+* chore: update package.json ([b661117](https://github.com/thwonghin/chinese-convert-cli/commit/b661117))
+
+
+
 ## <small>1.3.6 (2021-01-14)</small>
 
 * chore: update README.md ([29e1966](https://github.com/thwonghin/chinese-convert-cli/commit/29e1966))
