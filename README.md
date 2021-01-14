@@ -9,6 +9,9 @@ Command line interface to convert between Chinese text.
 ## Example
 
 ```bash
+# Install globally
+npm install -g chinese-convert-cli
+
 # Convert all "in/*.txt" files to Hong Kong Chinese and output to "out" folder
 chinese-convert -o out -c Hongkong in/*.txt
 
