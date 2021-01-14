@@ -16,17 +16,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14.15.4'
-      - name: Build Project
-        run: |
-          yarn
-          yarn build
-          yarn package
       - name: Create Release
-        uses: meeDamian/github-release@2.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          gzip: false
-          files: >
-            release/chinese-convert-cli-linux
-            release/chinese-convert-cli-macos
-            release/chinese-convert-cli-win.exe
+        uses: mikeal/merge-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+

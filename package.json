@@ -4,6 +4,7 @@
     "description": "Command line interface to convert between Chinese text.",
     "repository": "git@github.com:thwonghin/chinese-convert-cli.git",
     "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "author": "Hin Wong <thwong.henry@gmail.com>",
     "license": "MIT",
     "engines": {
@@ -15,14 +16,25 @@
         "clean": "rm -rf dist || true",
         "start": "yarn build && node dist/index.js",
         "build": "tsc",
-        "package": "mkdir -p release && pkg . --out-path release",
         "lint": "xo",
-        "lint:fix": "xo --fix"
+        "lint:fix": "xo --fix",
+        "version": "npx conventional-changelog-cli -p chinese-convert-cli -i CHANGELOG.md -s && git add CHANGELOG.md",
+        "prepublish": "npm shrinkwrap && tsc"
     },
-    "bin": "dist/index.js",
-    "pkg": {
-        "scripts": "dist/**/*.js"
+    "bin": {
+        "chinese-convert": "./dist/index.js"
     },
+    "publishConfig": {
+        "access": "public"
+    },
+    "files": [
+        "/dist/**/*.js",
+        "/dist/**/*.d.ts",
+        "LICENSE",
+        "README.md",
+        "package.json",
+        "npm-shrinkwrap.json"
+    ],
     "dependencies": {
         "axios": "^0.21.1",
         "fast-glob": "^3.2.4",
