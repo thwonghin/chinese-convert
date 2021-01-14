@@ -1,3 +1,9 @@
+## <small>1.4.1 (2021-01-14)</small>
+
+* chore: update readme ([5811d46](https://github.com/thwonghin/chinese-convert/commit/5811d46))
+
+
+
 ## 1.4.0 (2021-01-14)
 
 * chore: rename package to chinese-convert (#136) ([4312ef4](https://github.com/thwonghin/chinese-convert/commit/4312ef4)), closes [#136](https://github.com/thwonghin/chinese-convert/issues/136)
