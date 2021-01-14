@@ -2,3 +2,5 @@ node_modules
 dist
 release
 yarn-error.log
+npm-shrinkwrap.json
+**/tsconfig.tsbuildinfo
