@@ -6,7 +6,7 @@ name: Create Release
 
 jobs:
   build:
-    name: Release to NPM
+    name: Create Release
     runs-on: ubuntu-18.04
 
     steps:
@@ -19,8 +19,12 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install Dependencies
         run: yarn
-      - name: Create Release
+      - name: Publish to NPM
         run: yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+      - name: Create Github Release
+        uses: meeDamian/github-release@2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
