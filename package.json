@@ -21,6 +21,14 @@
         "version": "npx conventional-changelog-cli -p chinese-convert-cli -i CHANGELOG.md -s && git add CHANGELOG.md",
         "prepublish": "npm shrinkwrap && tsc"
     },
+    "keywords": [
+        "cli",
+        "translation",
+        "chinese",
+        "traditional-chinese",
+        "simplified-chinese",
+        "zhconvert"
+    ],
     "bin": {
         "chinese-convert": "./dist/index.js"
     },
