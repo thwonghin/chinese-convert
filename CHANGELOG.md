@@ -1,3 +1,8 @@
+## <small>1.3.7 (2021-01-14)</small>
+
+
+
+
 ## <small>1.3.6 (2021-01-14)</small>
 
 * chore: update README.md ([29e1966](https://github.com/thwonghin/chinese-convert-cli/commit/29e1966))
