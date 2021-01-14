@@ -16,11 +16,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14.15.4'
-      - name: Build Project
-        run: |
-          yarn
-          yarn build
-          yarn package
       - name: Create Release
         uses: mikeal/merge-release@master
         env:
