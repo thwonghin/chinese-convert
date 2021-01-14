@@ -20,7 +20,10 @@ jobs:
         run: |
           yarn
       - name: Create Release
-        run: yarn publish --access public --non-interactive
+        run: |
+          yarn config set npmAuthToken "$env:NPM_AUTH_TOKEN"
+          yarn config set npmPublishRegistry "https://registry.npmjs.org"
+          yarn publish --access public --non-interactive
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
