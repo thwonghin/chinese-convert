@@ -6,7 +6,7 @@ name: Create Release
 
 jobs:
   build:
-    name: Build Artifacts
+    name: Release to NPM
     runs-on: ubuntu-18.04
 
     steps:
@@ -20,7 +20,7 @@ jobs:
         run: |
           yarn
       - name: Create Release
-        run: npm publish --access public
+        run: yarn publish --access public --non-interactive
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
