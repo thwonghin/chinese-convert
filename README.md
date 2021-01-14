@@ -10,10 +10,10 @@ Command line interface to convert between Chinese text.
 
 ```bash
 # Convert all "in/*.txt" files to Hong Kong Chinese and output to "out" folder
-chinese-convert-cli -o out -c Hongkong in/*.txt
+chinese-convert -o out -c Hongkong in/*.txt
 
 # Convert "in1/1.txt" and "in2/2.txt" files to Taiwan Chinese and output in the input file's folder named as `*-new.txt`
-chinese-convert-cli -c Taiwan in1/1.txt in2/2.txt
+chinese-convert -c Taiwan in1/1.txt in2/2.txt
 ```
 
 Read more usage with `--help`.
@@ -33,9 +33,6 @@ yarn
 
 # Run this project
 yarn start
-
-# Build release to `release/` folder
-yarn build && yarn package
 ```
 
 ## TODO
