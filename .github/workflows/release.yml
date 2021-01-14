@@ -16,14 +16,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14.15.4'
+          registry-url: 'https://registry.npmjs.org'
       - name: Install Dependencies
-        run: |
-          yarn
+        run: yarn
       - name: Create Release
-        run: |
-          yarn config set npmAuthToken "$env:NPM_AUTH_TOKEN"
-          yarn config set npmPublishRegistry "https://registry.npmjs.org"
-          yarn publish --access public --non-interactive
+        run: yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
