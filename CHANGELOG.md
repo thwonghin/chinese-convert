@@ -1,3 +1,9 @@
+## <small>1.4.2 (2021-01-14)</small>
+
+* chore: create github release ([4a6ef84](https://github.com/thwonghin/chinese-convert/commit/4a6ef84))
+
+
+
 ## <small>1.4.1 (2021-01-14)</small>
 
 * chore: update readme ([5811d46](https://github.com/thwonghin/chinese-convert/commit/5811d46))
