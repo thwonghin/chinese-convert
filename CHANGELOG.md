@@ -1,3 +1,9 @@
+## <small>1.3.4 (2021-01-14)</small>
+
+* chore: update release.yml ([f72cd39](https://github.com/thwonghin/chinese-convert-cli/commit/f72cd39))
+
+
+
 ## <small>1.3.3 (2021-01-14)</small>
 
 * chore: update release.yml ([cb4a7ab](https://github.com/thwonghin/chinese-convert-cli/commit/cb4a7ab))
