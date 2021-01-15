@@ -51,6 +51,6 @@ export async function createAndWriteFile({
     filePath,
     content,
 }: CreateAndWriteFileParameters): Promise<void> {
-    await fs.promises.mkdir(path.dirname(filePath), {recursive: true});
+    await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
     await fs.promises.writeFile(filePath, content, 'utf-8');
 }

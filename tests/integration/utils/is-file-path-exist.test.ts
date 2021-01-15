@@ -1,5 +1,5 @@
 import * as path from 'path';
-import {isFilePathExist} from '@/utils';
+import { isFilePathExist } from '@/utils';
 
 interface TestParameters {
     filepath: string;

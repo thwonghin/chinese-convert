@@ -1,5 +1,5 @@
 import * as path from 'path';
-import {isFile} from '@/utils';
+import { isFile } from '@/utils';
 
 interface TestParameters {
     filepath: string;

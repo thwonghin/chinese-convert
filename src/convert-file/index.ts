@@ -1,7 +1,7 @@
-import {FanHuaJi} from '../libs/fanhuaji/index';
-import {Converter} from '../libs/fanhuaji/types';
-import {resolveOutPath} from './helpers';
-import {getFileContent, createAndWriteFile} from '../utils';
+import { FanHuaJi } from '../libs/fanhuaji/index';
+import { Converter } from '../libs/fanhuaji/types';
+import { resolveOutPath } from './helpers';
+import { getFileContent, createAndWriteFile } from '../utils';
 
 interface ConvertFileParameters {
     fanHuaJi: FanHuaJi;

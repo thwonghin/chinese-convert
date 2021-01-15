@@ -1,8 +1,8 @@
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 
-import {FanHuaJi} from '@/libs/fanhuaji';
-import {Converter, ConvertResponse} from '@/libs/fanhuaji/types';
+import { FanHuaJi } from '@/libs/fanhuaji';
+import { Converter, ConvertResponse } from '@/libs/fanhuaji/types';
 
 const axiosMock = new MockAdapter(axios);
 
@@ -18,7 +18,7 @@ describe('FanHuaJi', () => {
     describe('when the API response is code === 0', () => {
         beforeAll(async () => {
             fanhuaji = new FanHuaJi();
-            mockConvertResponse({code: 0});
+            mockConvertResponse({ code: 0 });
 
             try {
                 response = await fanhuaji.convert({
@@ -55,7 +55,7 @@ describe('FanHuaJi', () => {
     describe('when the API response is code !== 0', () => {
         beforeAll(async () => {
             fanhuaji = new FanHuaJi();
-            mockConvertResponse({code: 100, msg: 'Unknown Error'});
+            mockConvertResponse({ code: 100, msg: 'Unknown Error' });
 
             try {
                 response = await fanhuaji.convert({
