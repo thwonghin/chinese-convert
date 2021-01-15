@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import {createAndWriteFile} from '@/utils';
+import { createAndWriteFile } from '@/utils';
 
 interface TestParameters {
     filepath: string;

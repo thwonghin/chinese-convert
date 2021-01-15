@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import {isFile, isFilePathExist} from '../utils';
+import { isFile, isFilePathExist } from '../utils';
 
 interface ResolveOutPathParameters {
     inPath: string;

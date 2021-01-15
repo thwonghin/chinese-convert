@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import {getFileContent} from '@/utils';
+import { getFileContent } from '@/utils';
 
 interface TestParameters {
     filename: string;
