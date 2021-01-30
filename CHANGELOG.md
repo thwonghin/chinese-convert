@@ -1,3 +1,16 @@
+## <small>1.4.3 (2021-01-30)</small>
+
+* chore: add CI badge link to github action ([15b387f](https://github.com/thwonghin/chinese-convert/commit/15b387f))
+* chore: add link to npm for the npm badge ([92a9d2d](https://github.com/thwonghin/chinese-convert/commit/92a9d2d))
+* chore: add npm badge to README.md ([27e6540](https://github.com/thwonghin/chinese-convert/commit/27e6540))
+* chore: update github badge link ([a739635](https://github.com/thwonghin/chinese-convert/commit/a739635))
+* chore: upgrade deps 2021-01-20 (#143) ([f851d74](https://github.com/thwonghin/chinese-convert/commit/f851d74)), closes [#143](https://github.com/thwonghin/chinese-convert/issues/143)
+* chore: upgrade dev dpes (#145) ([fb68414](https://github.com/thwonghin/chinese-convert/commit/fb68414)), closes [#145](https://github.com/thwonghin/chinese-convert/issues/145)
+* ci: run ci on ubuntu 20.04 (#140) ([3779dcf](https://github.com/thwonghin/chinese-convert/commit/3779dcf)), closes [#140](https://github.com/thwonghin/chinese-convert/issues/140)
+* style: add bracket spacing (#139) ([ae22a52](https://github.com/thwonghin/chinese-convert/commit/ae22a52)), closes [#139](https://github.com/thwonghin/chinese-convert/issues/139)
+
+
+
 ## <small>1.4.2 (2021-01-14)</small>
 
 * chore: create github release ([4a6ef84](https://github.com/thwonghin/chinese-convert/commit/4a6ef84))
