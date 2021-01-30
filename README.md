@@ -1,6 +1,6 @@
 # Chinese Convert
 
-![Test](https://github.com/thwonghin/chinese-convert/workflows/Test/badge.svg)
+![npm](https://img.shields.io/npm/v/@thwonghin/chinese-convert) ![Test](https://github.com/thwonghin/chinese-convert/workflows/Test/badge.svg)
 
 Command line interface to convert between Chinese text.
 
