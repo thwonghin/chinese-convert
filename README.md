@@ -1,6 +1,6 @@
 # Chinese Convert
 
-[![npm (scoped)](https://img.shields.io/npm/v/@thwonghin/chinese-convert)](https://www.npmjs.com/package/@thwonghin/chinese-convert) ![Test](https://github.com/thwonghin/chinese-convert/workflows/Test/badge.svg)
+[![npm (scoped)](https://img.shields.io/npm/v/@thwonghin/chinese-convert)](https://www.npmjs.com/package/@thwonghin/chinese-convert) [![Test](https://github.com/thwonghin/chinese-convert/workflows/Test/badge.svg)](https://github.com/thwonghin/chinese-convert/actions?query=workflow%3ATest)
 
 Command line interface to convert between Chinese text.
 
