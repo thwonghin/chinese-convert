@@ -1,3 +1,11 @@
+## <small>1.4.4 (2021-03-18)</small>
+
+* chore: bump deps 2021-03-18 (#176) ([1b9256c](https://github.com/thwonghin/chinese-convert/commit/1b9256c)), closes [#176](https://github.com/thwonghin/chinese-convert/issues/176)
+* chore: use eslint instead of xolint (#177) ([1445ef3](https://github.com/thwonghin/chinese-convert/commit/1445ef3)), closes [#177](https://github.com/thwonghin/chinese-convert/issues/177)
+* chore(deps): [security] bump elliptic from 6.5.3 to 6.5.4 (#165) ([4091c39](https://github.com/thwonghin/chinese-convert/commit/4091c39)), closes [#165](https://github.com/thwonghin/chinese-convert/issues/165)
+
+
+
 ## <small>1.4.3 (2021-01-30)</small>
 
 * chore: add CI badge link to github action ([15b387f](https://github.com/thwonghin/chinese-convert/commit/15b387f))
