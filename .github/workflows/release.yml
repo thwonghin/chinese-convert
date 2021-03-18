@@ -15,7 +15,7 @@ jobs:
       - name: Use Node
         uses: actions/setup-node@v1
         with:
-          node-version: '14.15.4'
+          node-version: '14.16.0'
           registry-url: 'https://registry.npmjs.org'
       - name: Install Dependencies
         run: yarn
@@ -27,4 +27,3 @@ jobs:
         uses: meeDamian/github-release@2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-
