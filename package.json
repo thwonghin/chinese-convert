@@ -16,8 +16,11 @@
         "clean": "rm -rf dist || true",
         "start": "yarn build && node dist/index.js",
         "build": "tsc",
-        "lint": "xo",
-        "lint:fix": "xo --fix",
+        "lint": "yarn lint:src && yarn lint:test",
+        "lint:script": "eslint --ext ts,tsx",
+        "lint:src": "yarn lint:script src",
+        "lint:test": "yarn lint:script tests",
+        "lint:fix": "yarn lint:src --fix && yarn lint:test --fix",
         "version": "npx conventional-changelog-cli -p chinese-convert -i CHANGELOG.md -s && git add CHANGELOG.md",
         "prepublishOnly": "npm shrinkwrap && yarn build"
     },
@@ -54,11 +57,19 @@
         "@types/jest": "^26.0.21",
         "@types/node": "^14.14.35",
         "@types/yargs": "^16.0.0",
+        "@typescript-eslint/eslint-plugin": "^4.18.0",
+        "@typescript-eslint/parser": "^4.18.0",
         "axios-mock-adapter": "^1.19.0",
+        "eslint": "^7.22.0",
+        "eslint-config-prettier": "^8.1.0",
+        "eslint-config-xo": "^0.35.0",
+        "eslint-config-xo-react": "^0.24.0",
+        "eslint-config-xo-typescript": "xojs/eslint-config-xo-typescript.git#025fcf4",
         "eslint-plugin-jest": "^24.3.2",
+        "eslint-plugin-prettier": "^3.3.1",
         "jest": "^26.6.3",
+        "prettier": "^2.2.1",
         "ts-jest": "^26.5.4",
-        "typescript": "^4.2.3",
-        "xo": "^0.38.2"
+        "typescript": "^4.2.3"
     }
 }
