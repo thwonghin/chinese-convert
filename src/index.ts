@@ -3,7 +3,7 @@
 import * as yargs from 'yargs';
 import * as iconv from 'iconv-lite';
 import * as path from 'path';
-import * as fg from 'fast-glob';
+import fg from 'fast-glob';
 
 import { converters, FanHuaJi } from './libs/fanhuaji';
 import { Converter } from './libs/fanhuaji/types';
@@ -75,18 +75,18 @@ async function main(): Promise<void> {
 
     const fanHuaJi = new FanHuaJi();
 
-    await Promise.all(
-        entries.map(async (entry) =>
-            convertFile({
-                fanHuaJi,
-                inPath: path.resolve(cwd, entry),
-                outPath: outPath || path.dirname(entry),
-                converter: args.c as Converter,
-                inEncoding: args.e,
-                shouldReplace: args.r,
-            }),
-        ),
-    );
+    console.log('Going to convert these files:', entries.join(', '));
+
+    for (const entry of entries) {
+        await convertFile({
+            fanHuaJi,
+            inPath: path.resolve(cwd, entry),
+            outPath: outPath || path.dirname(entry),
+            converter: args.c as Converter,
+            inEncoding: args.e,
+            shouldReplace: args.r,
+        });
+    }
 
     console.log('Conversion done!');
 }

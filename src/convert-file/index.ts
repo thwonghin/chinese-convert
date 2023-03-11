@@ -1,7 +1,7 @@
 import { FanHuaJi } from '../libs/fanhuaji/index';
 import { Converter } from '../libs/fanhuaji/types';
 import { resolveOutPath } from './helpers';
-import { getFileContent, createAndWriteFile } from '../utils';
+import { getFileLinesStream, createWriteFileStream } from '../utils';
 
 interface ConvertFileParameters {
     fanHuaJi: FanHuaJi;
@@ -12,11 +12,6 @@ interface ConvertFileParameters {
     converter: Converter;
 }
 
-interface ConvertFileResult {
-    text: string;
-    diff: string | null;
-}
-
 export async function convertFile({
     fanHuaJi,
     inPath,
@@ -24,17 +19,12 @@ export async function convertFile({
     shouldReplace,
     inEncoding,
     converter,
-}: ConvertFileParameters): Promise<ConvertFileResult> {
+}: ConvertFileParameters): Promise<void> {
     console.log('Converting', inPath);
 
-    const fileContent = await getFileContent({
+    const fileLineStream = await getFileLinesStream({
         providedEncoding: inEncoding,
         filePath: inPath,
-    });
-
-    const result = await fanHuaJi.convert({
-        text: fileContent,
-        converter,
     });
 
     const resolvedOutPath = await resolveOutPath({
@@ -43,14 +33,20 @@ export async function convertFile({
         shouldReplace,
     });
 
-    await createAndWriteFile({
-        filePath: resolvedOutPath,
-        content: result.data.text,
+    const writeStream = await createWriteFileStream(resolvedOutPath);
+
+    await new Promise((resolve, reject) => {
+        fileLineStream
+            .pipe(
+                fanHuaJi.convertFromStream({
+                    converter,
+                }),
+            )
+            .on('error', reject)
+            .pipe(writeStream)
+            .on('error', reject)
+            .on('finish', resolve);
     });
 
     console.log('Done converting', inPath);
-    return {
-        text: result.data.text,
-        diff: result.data.diff,
-    };
 }

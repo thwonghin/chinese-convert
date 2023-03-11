@@ -1,4 +1,7 @@
+import { isAscii } from '../../utils';
 import axios, { AxiosInstance } from 'axios';
+import axiosRetry, { exponentialDelay } from 'axios-retry';
+import { Transform } from 'stream';
 
 import {
     ConvertRequestParameters,
@@ -33,17 +36,60 @@ export class FanHuaJi {
         this.#api = axios.create({
             baseURL: 'https://api.zhconvert.org',
         });
+        axiosRetry(this.#api, {
+            retries: 3,
+            retryDelay: exponentialDelay,
+            retryCondition: (error) => {
+                return (
+                    !error.response ||
+                    error.response.status === 429 ||
+                    error.response.status >= 500
+                );
+            },
+            onRetry: (retryCount, error) => {
+                console.log(
+                    'Retrying... count: ',
+                    retryCount,
+                    'Status Code: ',
+                    error.response?.status ?? 'None',
+                );
+            },
+        });
     }
 
-    public async convert(
-        parameters: ConvertRequestParameters,
-    ): Promise<ConvertResponse> {
+    convertFromStream(
+        // eslint-disable-next-line @typescript-eslint/ban-types
+        parameters: Omit<ConvertRequestParameters, 'text'>,
+    ): Transform {
+        return new Transform({
+            transform: async (chunk: ArrayBuffer, _, callback) => {
+                const text = Buffer.from(chunk).toString('utf8');
+                if (isAscii(text)) {
+                    callback(null, `${text}\n`);
+                    return;
+                }
+
+                await this.convert({
+                    ...parameters,
+                    text,
+                })
+                    .then(({ data }) => {
+                        callback(null, `${data.text}\n`);
+                    })
+                    .catch((error) => {
+                        callback(error, null);
+                    });
+            },
+        });
+    }
+
+    async convert(parameters: ConvertRequestParameters) {
         const response = await this.#api.post<ConvertResponse>(
             '/convert',
             parameters,
         );
-
         throwIfError(response.data);
+
         return response.data;
     }
 }
