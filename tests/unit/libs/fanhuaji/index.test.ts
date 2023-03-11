@@ -2,7 +2,8 @@ import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 
 import { FanHuaJi } from '@/libs/fanhuaji';
-import { Converter, ConvertResponse } from '@/libs/fanhuaji/types';
+import { Converter } from '@/libs/fanhuaji/types';
+import type { ConvertResponse } from '@/libs/fanhuaji/types';
 
 const axiosMock = new MockAdapter(axios);
 
@@ -39,7 +40,9 @@ describe('FanHuaJi', () => {
                 'https://api.zhconvert.org',
             );
             expect(axiosMock.history.post[0].url).toBe('/convert');
-            expect(JSON.parse(axiosMock.history.post[0].data)).toEqual({
+            expect(
+                JSON.parse(axiosMock.history.post[0].data as string),
+            ).toEqual({
                 text: 'test',
                 converter: Converter.HK,
             });
@@ -76,7 +79,9 @@ describe('FanHuaJi', () => {
                 'https://api.zhconvert.org',
             );
             expect(axiosMock.history.post[0].url).toBe('/convert');
-            expect(JSON.parse(axiosMock.history.post[0].data)).toEqual({
+            expect(
+                JSON.parse(axiosMock.history.post[0].data as string),
+            ).toEqual({
                 text: 'test',
                 converter: Converter.HK,
             });

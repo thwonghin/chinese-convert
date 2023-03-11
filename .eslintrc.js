@@ -1,7 +1,6 @@
 module.exports = {
     extends: [
         'xo',
-        'xo/esnext',
         'xo-typescript',
         "plugin:prettier/recommended"
     ],

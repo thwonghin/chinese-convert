@@ -6,11 +6,11 @@ import * as path from 'path';
 import fg from 'fast-glob';
 
 import { converters, FanHuaJi } from './libs/fanhuaji';
-import { Converter } from './libs/fanhuaji/types';
+import type { Converter } from './libs/fanhuaji/types';
 import { convertFile } from './convert-file';
 
 async function main(): Promise<void> {
-    const args = yargs
+    const args = await yargs
         .usage('Usage: $0 [file glob patterns]')
         .example(
             '$0 -c Hongkong -o out in/*.txt',
@@ -81,10 +81,10 @@ async function main(): Promise<void> {
         await convertFile({
             fanHuaJi,
             inPath: path.resolve(cwd, entry),
-            outPath: outPath || path.dirname(entry),
+            outPath: outPath ?? path.dirname(entry),
             converter: args.c as Converter,
             inEncoding: args.e,
-            shouldReplace: args.r,
+            shouldReplace: args.r ?? false,
         });
     }
 

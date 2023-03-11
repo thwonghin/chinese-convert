@@ -1,16 +1,16 @@
-import { FanHuaJi } from '../libs/fanhuaji/index';
-import { Converter } from '../libs/fanhuaji/types';
+import type { FanHuaJi } from '../libs/fanhuaji/index';
+import type { Converter } from '../libs/fanhuaji/types';
 import { resolveOutPath } from './helpers';
 import { getFileLinesStream, createWriteFileStream } from '../utils';
 
-interface ConvertFileParameters {
+type ConvertFileParameters = {
     fanHuaJi: FanHuaJi;
     inPath: string;
     outPath: string;
     shouldReplace: boolean;
     inEncoding?: string;
     converter: Converter;
-}
+};
 
 export async function convertFile({
     fanHuaJi,

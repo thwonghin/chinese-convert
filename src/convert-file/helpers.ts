@@ -2,11 +2,11 @@ import * as path from 'path';
 
 import { isFile, isFilePathExist } from '../utils';
 
-interface ResolveOutPathParameters {
+type ResolveOutPathParameters = {
     inPath: string;
     outPath: string;
     shouldReplace: boolean;
-}
+};
 
 export async function resolveOutPath({
     inPath,
