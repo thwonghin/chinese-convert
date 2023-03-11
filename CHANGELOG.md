@@ -1,3 +1,9 @@
+## <small>2.0.2 (2023-03-11)</small>
+
+* ci: fix cannot publish (#303) ([e6c52a0](https://github.com/thwonghin/chinese-convert/commit/e6c52a0)), closes [#303](https://github.com/thwonghin/chinese-convert/issues/303)
+
+
+
 ## <small>2.0.1 (2023-03-11)</small>
 
 * ci: upgrade auctions versions (#302) ([98145a1](https://github.com/thwonghin/chinese-convert/commit/98145a1)), closes [#302](https://github.com/thwonghin/chinese-convert/issues/302)
