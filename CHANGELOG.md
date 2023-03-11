@@ -1,3 +1,9 @@
+## <small>2.0.1 (2023-03-11)</small>
+
+* ci: upgrade auctions versions (#302) ([98145a1](https://github.com/thwonghin/chinese-convert/commit/98145a1)), closes [#302](https://github.com/thwonghin/chinese-convert/issues/302)
+
+
+
 ## 2.0.0 (2023-03-11)
 
 * chore: bump nodejs to 14.16.0 (#178) ([e44973d](https://github.com/thwonghin/chinese-convert/commit/e44973d)), closes [#178](https://github.com/thwonghin/chinese-convert/issues/178)
