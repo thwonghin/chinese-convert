@@ -15,14 +15,14 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: '18.15.0'
       - name: Install Dependencies
         run: |
-          yarn
+          yarn --immutable
       - name: Check Dependency Vulnerabilities
         run: |
           yarn npm audit
