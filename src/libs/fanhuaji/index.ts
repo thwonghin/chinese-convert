@@ -1,14 +1,15 @@
 import { isAscii } from '../../utils';
-import axios, { AxiosInstance } from 'axios';
+import axios from 'axios';
+import type { AxiosInstance } from 'axios';
 import axiosRetry, { exponentialDelay } from 'axios-retry';
 import { Transform } from 'stream';
 
-import {
+import type {
     ConvertRequestParameters,
     ConvertResponse,
-    Converter,
     Response,
 } from './types';
+import { Converter } from './types';
 
 export const converters: Converter[] = [
     Converter.BPMF,
@@ -34,19 +35,20 @@ export class FanHuaJi {
 
     constructor() {
         this.#api = axios.create({
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             baseURL: 'https://api.zhconvert.org',
         });
         axiosRetry(this.#api, {
             retries: 3,
             retryDelay: exponentialDelay,
-            retryCondition: (error) => {
+            retryCondition(error) {
                 return (
                     !error.response ||
                     error.response.status === 429 ||
                     error.response.status >= 500
                 );
             },
-            onRetry: (retryCount, error) => {
+            onRetry(retryCount, error) {
                 console.log(
                     'Retrying... count: ',
                     retryCount,
@@ -58,7 +60,6 @@ export class FanHuaJi {
     }
 
     convertFromStream(
-        // eslint-disable-next-line @typescript-eslint/ban-types
         parameters: Omit<ConvertRequestParameters, 'text'>,
     ): Transform {
         return new Transform({
@@ -76,7 +77,7 @@ export class FanHuaJi {
                     .then(({ data }) => {
                         callback(null, `${data.text}\n`);
                     })
-                    .catch((error) => {
+                    .catch((error: Error) => {
                         callback(error, null);
                     });
             },

@@ -5,10 +5,12 @@ module.exports = {
         '^@/(.*)$': '<rootDir>/src/$1',
         '^lodash-es$': 'lodash', // Workaround for es module
     },
-    globals: {
-        'ts-jest': {
-            isolatedModules: true,
-            tsconfig: 'tests/tsconfig.json',
-        },
-    },
+    transform: {
+        '^.+\\.tsx?$': [
+            'ts-jest', {
+                isolatedModules: true,
+                tsconfig: 'tests/tsconfig.json',
+            },
+        ]
+    }
 };

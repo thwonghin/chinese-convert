@@ -1,10 +1,10 @@
 import * as path from 'path';
 import { isFile } from '@/utils';
 
-interface TestParameters {
+type TestParameters = {
     filepath: string;
     result: boolean;
-}
+};
 
 describe('isFilePathExist', () => {
     describe.each`

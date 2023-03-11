@@ -6,7 +6,7 @@ type RequestParameters<T> = {
 } & T;
 
 // https://docs.zhconvert.org/api/getting-started/#api-回應的標準結構
-export interface Response<T> {
+export type Response<T> = {
     code: number;
     data: T;
     msg: string;
@@ -16,7 +16,7 @@ export interface Response<T> {
         time: number;
     };
     execTime: number;
-}
+};
 
 export const enum Converter {
     SC = 'Simplified', // 簡體化
@@ -79,7 +79,7 @@ export type ConvertRequestParameters = RequestParameters<{
 export type ConvertResponse = Response<{
     converter: Converter;
     text: string;
-    diff: string | null;
+    diff: string | undefined;
     usedModules: string[];
     jpTextStyles: string[];
     textFormat: string;

@@ -2,10 +2,10 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { createWriteFileStream } from '@/utils';
 
-interface TestParameters {
+type TestParameters = {
     filepath: string;
     isError: boolean;
-}
+};
 
 const temporaryDirectoryPath = path.resolve(__dirname, 'temp');
 

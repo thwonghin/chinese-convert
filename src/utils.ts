@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as iconv from 'iconv-lite';
 import split2 from 'split2';
 import languageEncoding from 'detect-file-encoding-and-language';
+import type { Transform } from 'stream';
 
 export async function isFilePathExist(filePath: string): Promise<boolean> {
     try {
@@ -18,15 +19,15 @@ export async function isFile(filePath: string): Promise<boolean> {
     return lstat.isFile();
 }
 
-interface GetFileContentParameters {
+type GetFileContentParameters = {
     filePath: string;
     providedEncoding?: string;
-}
+};
 
 export async function getFileLinesStream({
     filePath,
     providedEncoding,
-}: GetFileContentParameters): Promise<fs.ReadStream> {
+}: GetFileContentParameters): Promise<Transform> {
     const encoding =
         providedEncoding ?? (await languageEncoding(filePath)).encoding;
     if (!encoding) {

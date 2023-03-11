@@ -2,12 +2,12 @@ import * as path from 'path';
 
 import { getFileLinesStream } from '@/utils';
 
-interface TestParameters {
+type TestParameters = {
     filename: string;
     encoding?: string;
     result?: string;
     isError: boolean;
-}
+};
 
 describe('getFileLinesStream', () => {
     let readableStream: NodeJS.ReadableStream;
@@ -33,7 +33,7 @@ describe('getFileLinesStream', () => {
 
         if (testParameters.isError) {
             it('should throw error', () => {
-                expect(error.message).toBe(
+                expect(error?.message).toBe(
                     'Cannot detect encoding, please enter encoding manually. See --help.',
                 );
             });

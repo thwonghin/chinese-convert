@@ -10,6 +10,7 @@
         "paths": {
             "@/*": ["src/*"]
         },
+        "strict": true,
         "declaration": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true
