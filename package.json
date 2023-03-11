@@ -22,7 +22,7 @@
         "lint:test": "yarn lint:script tests",
         "lint:fix": "yarn lint:src --fix && yarn lint:test --fix",
         "version": "npx conventional-changelog-cli -p chinese-convert -i CHANGELOG.md -s && git add CHANGELOG.md",
-        "prepublishOnly": "npm shrinkwrap && yarn build"
+        "prepublishOnly": "yarn build"
     },
     "keywords": [
         "cli",
@@ -42,7 +42,7 @@
         "LICENSE",
         "README.md",
         "package.json",
-        "npm-shrinkwrap.json"
+        "yarn.lock"
     ],
     "dependencies": {
         "axios": "^1.3.4",
