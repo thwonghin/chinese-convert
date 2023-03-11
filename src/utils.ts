@@ -1,7 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as jschardet from 'jschardet';
 import * as iconv from 'iconv-lite';
+import split2 from 'split2';
+import languageEncoding from 'detect-file-encoding-and-language';
 
 export async function isFilePathExist(filePath: string): Promise<boolean> {
     try {
@@ -22,35 +23,35 @@ interface GetFileContentParameters {
     providedEncoding?: string;
 }
 
-export async function getFileContent({
+export async function getFileLinesStream({
     filePath,
     providedEncoding,
-}: GetFileContentParameters): Promise<string> {
-    const fileBuffer = await fs.promises.readFile(filePath);
+}: GetFileContentParameters): Promise<fs.ReadStream> {
     const encoding =
-        providedEncoding ||
-        jschardet.detect(fileBuffer, {
-            minimumThreshold: 0.96,
-        }).encoding;
-
+        providedEncoding ?? (await languageEncoding(filePath)).encoding;
     if (!encoding) {
         throw new Error(
             'Cannot detect encoding, please enter encoding manually. See --help.',
         );
     }
 
-    return iconv.decode(fileBuffer, encoding.toLowerCase());
+    const fileStream = fs.createReadStream(filePath);
+    return fileStream
+        .pipe(iconv.decodeStream(encoding))
+        .pipe(split2())
+        .on('close', () => {
+            fileStream.destroy();
+        });
 }
 
-interface CreateAndWriteFileParameters {
-    filePath: string;
-    content: string;
-}
-
-export async function createAndWriteFile({
-    filePath,
-    content,
-}: CreateAndWriteFileParameters): Promise<void> {
+export async function createWriteFileStream(
+    filePath: string,
+): Promise<fs.WriteStream> {
     await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
-    await fs.promises.writeFile(filePath, content, 'utf-8');
+    return fs.createWriteStream(filePath, 'utf-8');
+}
+
+export function isAscii(str: string): boolean {
+    // eslint-disable-next-line no-control-regex
+    return /^[\x00-\x7F]*$/.test(str);
 }

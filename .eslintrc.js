@@ -12,12 +12,10 @@ module.exports = {
     },
     rules: {
         "unicorn/no-array-callback-reference": "off",
-        "node/file-extension-in-import": "off"
+        "node/file-extension-in-import": "off",
+        'no-await-in-loop': 'off'
     },
     settings: {
-        react: {
-            version: 'detect',
-        },
         'import/resolver': {
             node: {
                 extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts'],

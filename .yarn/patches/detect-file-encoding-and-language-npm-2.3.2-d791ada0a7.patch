@@ -1,0 +1,11 @@
+diff --git a/src/index.d.ts b/src/index.d.ts
+index 0a030d3cf3856faf3eb11ce0b1688b08337ae27e..8d50bf573bf79d11a847346660e7ddd8ed937a69 100644
+--- a/src/index.d.ts
++++ b/src/index.d.ts
+@@ -7,5 +7,5 @@ export interface FileInfo {
+     },
+ }
+ 
+-declare function DetectFileEncodingAndLanguage(clientSideFileOrServerSidePath: File | Blob | string | Buffer | URL): Promise<FileInfo>;
++declare function DetectFileEncodingAndLanguage(clientSideFileOrServerSidePath: Blob | string | Buffer | URL): Promise<FileInfo>;
+ export default DetectFileEncodingAndLanguage;
