@@ -1,3 +1,10 @@
+## <small>2.0.3 (2023-03-11)</small>
+
+* ci: cache yarn (#305) ([3b6185d](https://github.com/thwonghin/chinese-convert/commit/3b6185d)), closes [#305](https://github.com/thwonghin/chinese-convert/issues/305)
+* chore: update prePublishOnly script (#304) ([cfa1fb7](https://github.com/thwonghin/chinese-convert/commit/cfa1fb7)), closes [#304](https://github.com/thwonghin/chinese-convert/issues/304)
+
+
+
 ## <small>2.0.2 (2023-03-11)</small>
 
 * ci: fix cannot publish (#303) ([e6c52a0](https://github.com/thwonghin/chinese-convert/commit/e6c52a0)), closes [#303](https://github.com/thwonghin/chinese-convert/issues/303)
