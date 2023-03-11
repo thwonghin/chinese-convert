@@ -1,6 +1,6 @@
 {
     "name": "@thwonghin/chinese-convert",
-    "version": "1.4.4",
+    "version": "2.0.0",
     "description": "Command line interface to convert between Chinese text.",
     "repository": "git@github.com:thwonghin/chinese-convert.git",
     "main": "dist/index.js",

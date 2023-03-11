@@ -1,3 +1,11 @@
+## 2.0.0 (2023-03-11)
+
+* chore: bump nodejs to 14.16.0 (#178) ([e44973d](https://github.com/thwonghin/chinese-convert/commit/e44973d)), closes [#178](https://github.com/thwonghin/chinese-convert/issues/178)
+* chore: upgrade packages (#301) ([ecd5c5a](https://github.com/thwonghin/chinese-convert/commit/ecd5c5a)), closes [#301](https://github.com/thwonghin/chinese-convert/issues/301)
+* feat: convert files with stream (#300) ([8783208](https://github.com/thwonghin/chinese-convert/commit/8783208)), closes [#300](https://github.com/thwonghin/chinese-convert/issues/300)
+
+
+
 ## <small>1.4.4 (2021-03-18)</small>
 
 * chore: bump deps 2021-03-18 (#176) ([1b9256c](https://github.com/thwonghin/chinese-convert/commit/1b9256c)), closes [#176](https://github.com/thwonghin/chinese-convert/issues/176)
