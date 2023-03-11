@@ -11,16 +11,15 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: '18.15.0'
-          registry-url: 'https://registry.npmjs.org'
       - name: Install Dependencies
-        run: yarn
+        run: yarn --immutable
       - name: Publish to NPM
-        run: yarn publish --access public
+        run: yarn npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       - name: Create Github Release
