@@ -25,7 +25,7 @@ jobs:
           yarn
       - name: Check Dependency Vulnerabilities
         run: |
-          yarn audit
+          yarn npm audit
       - name: Run Lint
         run: |
           yarn lint
