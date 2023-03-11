@@ -48,7 +48,7 @@ Examples:
 
 ### Prerequisite
 
-- \>= Node v14 (or `nvm install`)
+- \>= Node v18 (or `nvm install`)
 - This project uses `yarn` as dependency management tool
 
 ### Run
