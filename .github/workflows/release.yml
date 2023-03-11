@@ -19,9 +19,10 @@ jobs:
       - name: Install Dependencies
         run: yarn --immutable
       - name: Publish to NPM
-        run: yarn npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
+          access: 'public'
       - name: Create Github Release
         uses: meeDamian/github-release@2.0
         with:
