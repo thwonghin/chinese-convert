@@ -1,4 +1,5 @@
 import * as path from 'path';
+
 import { isFilePathExist } from '@/utils';
 
 type TestParameters = {

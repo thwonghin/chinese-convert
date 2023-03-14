@@ -11,6 +11,7 @@
         "node": ">=14"
     },
     "scripts": {
+        "format": "prettier --write .",
         "test:unit": "jest tests/unit",
         "test:integration": "jest tests/integration",
         "clean": "rm -rf dist || true",
@@ -55,6 +56,7 @@
         "yargs": "^17.7.0"
     },
     "devDependencies": {
+        "@serverless-guru/prettier-plugin-import-order": "^0.4.1",
         "@types/jest": "^29.4.0",
         "@types/node": "^18.15.0",
         "@types/split2": "^3.2.1",

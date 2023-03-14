@@ -1,9 +1,10 @@
-import MockAdapter from 'axios-mock-adapter';
+import type { ConvertResponse } from '@/libs/fanhuaji/types';
+
 import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 
 import { FanHuaJi } from '@/libs/fanhuaji';
 import { Converter } from '@/libs/fanhuaji/types';
-import type { ConvertResponse } from '@/libs/fanhuaji/types';
 
 const axiosMock = new MockAdapter(axios);
 
