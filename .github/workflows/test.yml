@@ -20,22 +20,22 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.15.0'
-          cache: 'yarn'
+          cache: 'pnpm'
       - name: Install Dependencies
         run: |
-          yarn --immutable
+          pnpm i --frozen-lockfile
       - name: Check Dependency Vulnerabilities
         run: |
-          yarn npm audit
+          pnpm audit
       - name: Run Lint
         run: |
-          yarn lint
+          pnpm lint
       - name: Build
         run: |
-          yarn build
+          pnpm build
       - name: Unit Test
         run: |
-          yarn test:unit
+          pnpm test:unit
       - name: Integration Test
         run: |
-          yarn test:integration
+          pnpm test:integration
