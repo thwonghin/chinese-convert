@@ -21,7 +21,7 @@
         "lint:src": "pnpm lint:script src",
         "lint:test": "pnpm lint:script tests",
         "lint:fix": "pnpm lint:src --fix && pnpm lint:test --fix",
-        "version": "npx conventional-changelog-cli -p chinese-convert -i CHANGELOG.md -s && git add CHANGELOG.md",
+        "version": "pnpx conventional-changelog-cli -p chinese-convert -i CHANGELOG.md -s && git add CHANGELOG.md",
         "prepublishOnly": "pnpm build"
     },
     "keywords": [
