@@ -55,7 +55,7 @@ Examples:
 
 ```bash
 # Install dependencies
-pnpm
+pnpm i
 
 # Run this project
 pnpm start
