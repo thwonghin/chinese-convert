@@ -5,12 +5,3 @@ yarn-error.log
 npm-shrinkwrap.json
 **/tsconfig.tsbuildinfo
 .vscode
-
-# yarn
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
