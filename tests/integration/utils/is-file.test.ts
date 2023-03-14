@@ -1,4 +1,5 @@
 import * as path from 'path';
+
 import { isFile } from '@/utils';
 
 type TestParameters = {

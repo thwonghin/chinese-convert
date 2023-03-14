@@ -1,10 +1,12 @@
+import type { TransformCallback } from 'stream';
+
 import * as fs from 'fs';
 import * as path from 'path';
+import { Transform } from 'stream';
+
+import languageEncoding from 'detect-file-encoding-and-language';
 import * as iconv from 'iconv-lite';
 import split2 from 'split2';
-import languageEncoding from 'detect-file-encoding-and-language';
-import { Transform } from 'stream';
-import type { TransformCallback } from 'stream';
 
 export async function isFilePathExist(filePath: string): Promise<boolean> {
     try {

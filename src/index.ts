@@ -1,13 +1,14 @@
 #!/usr/bin/env node
-
-import * as yargs from 'yargs';
-import * as iconv from 'iconv-lite';
-import * as path from 'path';
-import fg from 'fast-glob';
-
-import { converters, FanHuaJi } from './libs/fanhuaji';
 import type { Converter } from './libs/fanhuaji/types';
+
+import * as path from 'path';
+
+import fg from 'fast-glob';
+import * as iconv from 'iconv-lite';
+import * as yargs from 'yargs';
+
 import { convertFile } from './convert-file';
+import { FanHuaJi, converters } from './libs/fanhuaji';
 
 async function main(): Promise<void> {
     const args = await yargs

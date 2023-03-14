@@ -1,14 +1,16 @@
-import { isAscii } from '../../utils';
-import axios from 'axios';
 import type { AxiosInstance } from 'axios';
-import axiosRetry, { exponentialDelay } from 'axios-retry';
-import { Transform } from 'stream';
-
 import type {
     ConvertRequestParameters,
     ConvertResponse,
     Response,
 } from './types';
+
+import { Transform } from 'stream';
+
+import axios from 'axios';
+import axiosRetry, { exponentialDelay } from 'axios-retry';
+
+import { isAscii } from '../../utils';
 import { Converter } from './types';
 
 export const converters: Converter[] = [

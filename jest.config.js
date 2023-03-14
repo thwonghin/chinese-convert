@@ -7,10 +7,11 @@ module.exports = {
     },
     transform: {
         '^.+\\.tsx?$': [
-            'ts-jest', {
+            'ts-jest',
+            {
                 isolatedModules: true,
                 tsconfig: 'tests/tsconfig.json',
             },
-        ]
-    }
+        ],
+    },
 };

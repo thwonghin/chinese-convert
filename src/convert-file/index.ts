@@ -1,7 +1,8 @@
 import type { FanHuaJi } from '../libs/fanhuaji/index';
 import type { Converter } from '../libs/fanhuaji/types';
+
+import { createWriteFileStream, getFileLinesStream } from '../utils';
 import { resolveOutPath } from './helpers';
-import { getFileLinesStream, createWriteFileStream } from '../utils';
 
 type ConvertFileParameters = {
     fanHuaJi: FanHuaJi;
