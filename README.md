@@ -48,17 +48,17 @@ Examples:
 
 ### Prerequisite
 
-- \>= Node v18 (or `nvm install`)
-- This project uses `yarn` as dependency management tool
+- \>= Node v14
+- This project uses `pnpm` as dependency management tool
 
 ### Run
 
 ```bash
 # Install dependencies
-yarn
+pnpm i
 
 # Run this project
-yarn start
+pnpm start
 ```
 
 ## TODO
