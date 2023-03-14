@@ -1,3 +1,13 @@
+## 2.1.0 (2023-03-14)
+
+* chore: remove all yarn appearance (#309) ([3b4b031](https://github.com/thwonghin/chinese-convert/commit/3b4b031)), closes [#309](https://github.com/thwonghin/chinese-convert/issues/309)
+* chore: use pnpm instead of yarn (#306) ([c9a38ec](https://github.com/thwonghin/chinese-convert/commit/c9a38ec)), closes [#306](https://github.com/thwonghin/chinese-convert/issues/306)
+* perf: buffer lines before calling api (#308) ([6f36ad9](https://github.com/thwonghin/chinese-convert/commit/6f36ad9)), closes [#308](https://github.com/thwonghin/chinese-convert/issues/308)
+* ci: test on different node version (#307) ([8054052](https://github.com/thwonghin/chinese-convert/commit/8054052)), closes [#307](https://github.com/thwonghin/chinese-convert/issues/307)
+* Update README.md ([3bb68bc](https://github.com/thwonghin/chinese-convert/commit/3bb68bc))
+
+
+
 ## <small>2.0.3 (2023-03-11)</small>
 
 * ci: cache yarn (#305) ([3b6185d](https://github.com/thwonghin/chinese-convert/commit/3b6185d)), closes [#305](https://github.com/thwonghin/chinese-convert/issues/305)
