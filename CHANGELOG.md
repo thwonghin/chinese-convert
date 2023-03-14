@@ -1,3 +1,10 @@
+## <small>2.1.1 (2023-03-14)</small>
+
+* chore: use pnpx instead of npx (#311) ([06a911c](https://github.com/thwonghin/chinese-convert/commit/06a911c)), closes [#311](https://github.com/thwonghin/chinese-convert/issues/311)
+* ci: use forked npm-publish action (#310) ([c9ce953](https://github.com/thwonghin/chinese-convert/commit/c9ce953)), closes [#310](https://github.com/thwonghin/chinese-convert/issues/310)
+
+
+
 ## 2.1.0 (2023-03-14)
 
 * chore: remove all yarn appearance (#309) ([3b4b031](https://github.com/thwonghin/chinese-convert/commit/3b4b031)), closes [#309](https://github.com/thwonghin/chinese-convert/issues/309)
